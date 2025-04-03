@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/valhodle/static/css/main.35f9009e.css",
-    "main.js": "/valhodle/static/js/main.b19de378.js",
-    "static/js/453.4c1c1dcf.chunk.js": "/valhodle/static/js/453.4c1c1dcf.chunk.js",
-    "static/media/kaisa.jpg": "/valhodle/static/media/kaisa.5f8c489f16cd0b4cbaa1.jpg",
-    "static/media/FrizQuadrataRegular.ttf": "/valhodle/static/media/FrizQuadrataRegular.b7f0a4bc1da48c89dcf5.ttf",
-    "index.html": "/valhodle/index.html",
-    "main.35f9009e.css.map": "/valhodle/static/css/main.35f9009e.css.map",
-    "main.b19de378.js.map": "/valhodle/static/js/main.b19de378.js.map",
-    "453.4c1c1dcf.chunk.js.map": "/valhodle/static/js/453.4c1c1dcf.chunk.js.map"
+    "main.css": "/static/css/main.4284acd4.css",
+    "main.js": "/static/js/main.916dd2d1.js",
+    "static/js/453.4c1c1dcf.chunk.js": "/static/js/453.4c1c1dcf.chunk.js",
+    "static/media/kaisa.jpg": "/static/media/kaisa.5f8c489f16cd0b4cbaa1.jpg",
+    "static/media/FrizQuadrataRegular.ttf": "/static/media/FrizQuadrataRegular.b7f0a4bc1da48c89dcf5.ttf",
+    "index.html": "/index.html",
+    "main.4284acd4.css.map": "/static/css/main.4284acd4.css.map",
+    "main.916dd2d1.js.map": "/static/js/main.916dd2d1.js.map",
+    "453.4c1c1dcf.chunk.js.map": "/static/js/453.4c1c1dcf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.35f9009e.css",
-    "static/js/main.b19de378.js"
+    "static/css/main.4284acd4.css",
+    "static/js/main.916dd2d1.js"
   ]
 }
