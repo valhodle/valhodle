@@ -1,0 +1,38 @@
+[
+{
+    "model": "core.pessoa",
+    "pk": 1,
+    "fields": {
+        "nome": "Sabrina",
+        "ano": 2003,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 2,
+    "fields": {
+        "nome": "Marin",
+        "ano": 2001,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 3,
+    "fields": {
+        "nome": "Timtim",
+        "ano": 2002,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 4,
+    "fields": {
+        "nome": "Daila",
+        "ano": 2001,
+        "oculos": false
+    }
+}
+]
