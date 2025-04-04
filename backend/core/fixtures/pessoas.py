@@ -18,7 +18,8 @@ def df_para_json(df, caminho_json):
                 "tatuagem": [v.strip() for v in str(row["tatuagem"]).split(";") if v.strip()],
                 "altura": float(row["altura"]) if pd.notna(row["altura"]) else 0,
                 "area_estudo": row.get("area_estudo", "não informado"),
-                "time": row.get("time", "nenhum")
+                "time": row.get("time", "nenhum"),
+                "animal_de_estimacao": row.get("animal_de_estimacao", "nenhum")
             }
         }
         pessoas.append(pessoa)

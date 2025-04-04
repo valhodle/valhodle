@@ -9,17 +9,12 @@ class Pessoa(models.Model):
     altura = models.IntegerField(default=0)  
     area_estudo = models.CharField(max_length=100, default="não informado")
     time = models.CharField(max_length=100, default="nenhum")
+    animal_de_estimacao = models.CharField(max_length=100, default="nenhum")
 
     def __str__(self):
         return self.nome
 
     def get_feedback(self, tentativa):
-        """
-        tentativa: dict com os valores que o jogador chutou.
-        Ex: {'ano': 2001, 'oculos': 'sim'}
-
-        Retorna: dict com status para cada campo.
-        """
         campos = [field.name for field in self._meta.fields if field.name not in ['id', 'nome']]
         feedback = {}
         for field in campos:

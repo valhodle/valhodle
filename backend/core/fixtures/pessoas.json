@@ -13,7 +13,8 @@
             ],
             "altura": 167.0,
             "area_estudo": "Exatas",
-            "time": "nenhum"
+            "time": "nenhum",
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -30,7 +31,8 @@
             ],
             "altura": 185.0,
             "area_estudo": "Exatas",
-            "time": "FNATIC/100T"
+            "time": "FNATIC/100T",
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -47,7 +49,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -64,7 +67,8 @@
             ],
             "altura": 165.0,
             "area_estudo": "Exatas",
-            "time": "GENG"
+            "time": "GENG",
+            "animal_de_estimacao": "Cachorro/Gato"
         }
     },
     {
@@ -74,15 +78,15 @@
             "nome": "Adachi",
             "ano": 2001,
             "oculos": [
-                "sim",
-                "não"
+                "sim"
             ],
             "tatuagem": [
                 "nan"
             ],
             "altura": 182.0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Gato"
         }
     },
     {
@@ -99,7 +103,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -116,7 +121,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -133,7 +139,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -150,7 +157,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -167,7 +175,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -184,7 +193,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -201,7 +211,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -218,7 +229,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -235,7 +247,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -252,7 +265,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": "São Paulo"
+            "time": "São Paulo",
+            "animal_de_estimacao": "Gato"
         }
     },
     {
@@ -269,7 +283,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -286,7 +301,8 @@
             ],
             "altura": 160.0,
             "area_estudo": NaN,
-            "time": "Los Ratones"
+            "time": "Los Ratones",
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -303,7 +319,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -320,7 +337,8 @@
             ],
             "altura": 173.0,
             "area_estudo": "Humanas",
-            "time": "Loud/Pain"
+            "time": "Loud;Pain",
+            "animal_de_estimacao": "Gato"
         }
     },
     {
@@ -337,7 +355,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -354,7 +373,8 @@
             ],
             "altura": 180.0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Gato"
         }
     },
     {
@@ -371,7 +391,8 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -388,7 +409,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -405,7 +427,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": "G2"
+            "time": "G2",
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -422,7 +445,8 @@
             ],
             "altura": 0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": NaN
         }
     },
     {
@@ -439,7 +463,8 @@
             ],
             "altura": 178.0,
             "area_estudo": "Exatas",
-            "time": NaN
+            "time": NaN,
+            "animal_de_estimacao": "Cachorro"
         }
     }
 ]

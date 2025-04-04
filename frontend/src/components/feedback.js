@@ -9,7 +9,8 @@ const NOMES_ATRIBUTOS = {
     "tatuagem": "Tem tatuagem",
     "altura": "Altura",
     "area_estudo": "Área de estudo",
-    "time": "Time"
+    "time": "Time",
+    "animal_de_estimacao": "Animal de estimação"
 };
 
 const FeedbackTable = ({ tentativas }) => {

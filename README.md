@@ -137,6 +137,27 @@ Endpoint: `POST /api/jogo/verificar_tentativa`
     "tentativas": 4
 }
 ```
+---
+
+## Para adicionar uma nova categoria
+1. Vá até `C:\Projetos\Valhodle\backend\core\models.py` e adicione a categoria na classe `Pessoa`.
+2. Atualize o nome do atributo em `C:\Projetos\Valhodle\frontend\src\components\feedback.js`.
+3. Rode os seguintes comandos para adicionar o atributo ao banco de dados:
+```sh
+python manage.py makemigrations core
+python manage.py migrate
+```
+4. Adicione essa nova coluna com o nome do modelo na planilha do Google Sheets, caso ela ainda não esteja lá.
+5. Atualize o script `pessoas.py` com a nova categoria.
+6. Rode o script `pessoas.py` em `C:\Projetos\Valhodle\backend\core\fixtures\pessoas.py`.
+6. Atualize o banco de dados com:
+```sh
+python manage.py loaddata core/fixtures/pessoas.json
+```
+7. Rode o server  com:
+```sh
+python manage.py runserver
+```
 
 ---
 
@@ -167,4 +188,131 @@ python manage.py dumpdata core.Pessoa --indent 4 > core/fixtures/pessoas.json
 Atualizar o banco de dados apenas com os dados do pessoas.json
 
 python manage.py loaddata core/fixtures/pessoas.json
+
+# Valhodle
+
+Este projeto contém o backend e o frontend do Valhodle.
+
+## Como rodar o Backend
+
+O backend está localizado na pasta `valhodle/backend` e usa Django.
+
+### 1. Instalar dependências
+Antes de rodar o backend, certifique-se de ter o Python instalado e, se necessário, crie um ambiente virtual:
+```sh
+cd valhodle/backend
+python -m venv venv
+source venv/bin/activate  # No Windows use: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Criar e atualizar o banco de dados
+Antes de rodar o servidor, o banco de dados precisa estar configurado corretamente:
+```sh
+python manage.py makemigrations core  # Cria as migrações para o app core
+python manage.py migrate             # Aplica as migrações ao banco de dados
+```
+Esses comandos garantem que a estrutura do banco esteja atualizada com os modelos do Django.
+
+### 3. Rodar o servidor
+Para iniciar o backend, execute:
+```sh
+python manage.py runserver
+```
+O servidor estará disponível em `http://127.0.0.1:8000/`.
+
+### 4. Atualizar o banco de dados
+
+#### Exportar dados do banco de dados para JSON:
+Se precisar gerar um dump do banco de dados com os dados da tabela `Pessoa`, use:
+```sh
+python manage.py dumpdata core.Pessoa --indent 4 > core/fixtures/pessoas.json
+```
+
+#### Carregar dados do arquivo JSON no banco:
+Se quiser restaurar os dados a partir do JSON salvo, use:
+```sh
+python manage.py loaddata core/fixtures/pessoas.json
+```
+
+#### Atualizar o banco de dados com dados do Google Sheets:
+Se precisar atualizar o banco de dados com os dados mais recentes do Google Sheets, siga os passos:
+1. Navegue até a pasta correta:
+```sh
+cd core/fixtures
+```
+2. Execute o script `pessoas.py` para atualizar `pessoas.json`:
+```sh
+python pessoas.py
+```
+3. Carregue os novos dados no banco:
+```sh
+cd ../..
+python manage.py loaddata core/fixtures/pessoas.json
+```
+
+Se o banco foi atualizado diretamente pelo Django, lembre-se de rodar as migrações novamente:
+```sh
+python manage.py makemigrations core
+python manage.py migrate
+```
+
+### 5. Testar Endpoints
+Para testar o backend, envie requisições para os endpoints da API:
+
+#### Iniciar um jogo
+Endpoint: `POST /api/jogo/iniciar`
+```json
+{
+  "jogador": "Sabrina",
+  "modo": "normal"
+}
+```
+
+#### Verificar uma tentativa
+Endpoint: `POST /api/jogo/verificar_tentativa`
+```json
+{
+  "jogo_id": 72,
+  "tentativa": "Sabrina"
+}
+```
+
+---
+
+## Como rodar o Frontend
+
+O frontend está localizado na pasta `valhodle/frontend` e usa React.
+
+### 1. Instalar dependências
+Antes de rodar o frontend, instale as dependências:
+```sh
+cd valhodle/frontend
+npm install
+```
+
+### 2. Rodar o servidor de desenvolvimento
+Para iniciar o frontend, execute:
+```sh
+npm start
+```
+O aplicativo estará disponível em `http://localhost:3000/`.
+
+---
+
+## Para adicionar uma nova categoria
+1. Vá até `C:\Projetos\Valhodle\backend\core\models.py` e adicione a categoria na classe `Pessoa`.
+2. Atualize o nome do atributo em `C:\Projetos\Valhodle\frontend\src\components\feedback.js`.
+3. Rode os seguintes comandos para adicionar o atributo ao banco de dados:
+```sh
+python manage.py makemigrations core
+python manage.py migrate
+```
+4. Adicione essa nova coluna com o nome do modelo na planilha do Google Sheets, caso ela ainda não esteja lá.
+5. Rode o script `pessoas.py` em `C:\Projetos\Valhodle\backend\core\fixtures\pessoas.py`.
+6. Atualize o banco de dados com:
+```sh
+python manage.py loaddata core/fixtures/pessoas.json
+```
+
 
