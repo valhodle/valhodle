@@ -22,14 +22,14 @@ const Ranking = ({ onClose }) => {
         <div className="ranking-overlay">
             <div className="ranking-modal">
                 <button className="fechar-btn" onClick={onClose}>Fechar</button>
-                <h2>🏆 Ranking dos Melhores Jogadores</h2>
+                <h2>🏆 Ranking dos melhores jogadores</h2>
                 <table className="ranking-tabela">
                     <thead>
                         <tr>
                             <th>Posição</th>
                             <th>Jogador</th>
                             <th>Jogos</th>
-                            <th>Média de Tentativas</th>
+                            <th>Média de tentativas</th>
                         </tr>
                     </thead>
                     <tbody>
