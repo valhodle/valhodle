@@ -1,5 +1,5 @@
 
-const API_URL = "https://valhodlebackend.onrender.com/api/jogo/";
+const API_URL = "https://valhodlebackend.onrender.com/api/jogo";
 //const API_URL = "http://127.0.0.1:8000/api/jogo"; 
 
 export const iniciarJogo = async (jogador, modo = "normal") => {
