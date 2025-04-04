@@ -58,13 +58,29 @@ def verificar_tentativa(request):
                 valor_tentativa = getattr(tentativa, field.name)
                 valor_alvo = getattr(alvo, field.name)
 
-                if isinstance(valor_tentativa, bool):
-                    valor_tentativa = getattr(tentativa, f'get_{field.name}_display')()
-                    valor_alvo = getattr(alvo, f'get_{field.name}_display')()
+                # Se ambos forem listas
+                if isinstance(valor_tentativa, list) and isinstance(valor_alvo, list):
+                    intersecao = set(valor_tentativa) & set(valor_alvo)
+                    if intersecao:
+                        correto = "certo" if set(valor_tentativa) == set(valor_alvo) else "meio"
+                    else:
+                        correto = "errado"
+                
+                # Se apenas o valor do alvo for lista
+                elif isinstance(valor_alvo, list):
+                    correto = "meio" if valor_tentativa in valor_alvo else "errado"
+
+                # Se apenas o valor da tentativa for lista
+                elif isinstance(valor_tentativa, list):
+                    correto = "meio" if valor_alvo in valor_tentativa else "errado"
+
+                # Ambos são valores simples
+                else:
+                    correto = "certo" if valor_tentativa == valor_alvo else "errado"
 
                 feedback[field.name] = {
                     "valor": valor_tentativa,
-                    "correto": valor_tentativa == valor_alvo,
+                    "correto": correto,
                     "valorCorreto": valor_alvo
                 }
     
@@ -81,7 +97,7 @@ def verificar_tentativa(request):
         jogo.save()
 
         for key in feedback:
-            feedback[key]["correto"] = True
+           feedback[key]["correto"] = "certo"
 
         return Response({
             'mensagem': 'Parabéns! Você acertou!', 

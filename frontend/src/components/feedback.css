@@ -52,6 +52,11 @@
     color: rgb(58, 10, 10); /* Define a cor base para a seta */
 }
 
+.partial {
+    background-color: orange;
+    color: rgb(85, 52, 6); /* tom terroso/amarelado para a seta */
+}
+
 .arrow-icon {
     position: absolute;
     font-size: 80px;

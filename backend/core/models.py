@@ -2,28 +2,40 @@ from django.db import models
 
 # Define as tabelas do banco de dados
 class Pessoa(models.Model):
-
     nome = models.CharField(max_length=100)
     ano = models.IntegerField(default=0)
-    oculos = models.BooleanField(default=False)
-
+    oculos = models.JSONField(default=list) 
+    tatuagem = models.JSONField(default=list) 
+    altura = models.IntegerField(default=0)  
+    area_estudo = models.CharField(max_length=100, default="não informado")
+    time = models.CharField(max_length=100, default="nenhum")
 
     def __str__(self):
         return self.nome
 
-    def get_oculos_display(self):
-        return "Usa" if self.oculos else "Não usa"
+    def get_feedback(self, tentativa):
+        """
+        tentativa: dict com os valores que o jogador chutou.
+        Ex: {'ano': 2001, 'oculos': 'sim'}
 
-    def get_feedback(self):
+        Retorna: dict com status para cada campo.
+        """
+        campos = [field.name for field in self._meta.fields if field.name not in ['id', 'nome']]
         feedback = {}
-        for field in self._meta.fields:
-            if field.name not in ["id"]:
-                valor = getattr(self, field.name)
+        for field in campos:
+            valor_correto = getattr(self, field)
+            valor_tentado = tentativa.get(field)
 
-                if isinstance(valor, bool):
-                    valor = getattr(self, f'get_{field.name}_display')()
+            # caso o valor correto seja lista (como 'oculos')
+            if isinstance(valor_correto, list):
+                if valor_tentado in valor_correto:
+                    status = 'meio' if len(valor_correto) > 1 else 'certo'
+                else:
+                    status = 'errado'
+            else:
+                status = 'certo' if valor_tentado == valor_correto else 'errado'
 
-                feedback[field] = valor 
+            feedback[field] = status
 
         return feedback
 

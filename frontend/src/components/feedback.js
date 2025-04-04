@@ -1,12 +1,15 @@
 import React from 'react';
 import './feedback.css';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import { BsFillTriangleFill } from "react-icons/bs";
 
 const NOMES_ATRIBUTOS = {
     "nome": "Nome",
     "ano": "Ano de nascimento",
-    "oculos": "Usa óculos"
+    "oculos": "Usa óculos",
+    "tatuagem": "Tem tatuagem",
+    "altura": "Altura",
+    "area_estudo": "Área de estudo",
+    "time": "Time"
 };
 
 const FeedbackTable = ({ tentativas }) => {
@@ -29,18 +32,26 @@ const FeedbackTable = ({ tentativas }) => {
                     {atributos.map((atributo, index) => {
                         const { valor, correto, valorCorreto } = tentativa.feedback[atributo];
 
-                        // Determinar o ícone da seta se for um número
+                        // Define a classe com base na resposta
+                        let classeCor = "incorrect";
+                        if (correto === "certo") {
+                            classeCor = "correct";
+                        } else if (correto === "meio") {
+                            classeCor = "partial";
+                        }
+
+                        // Ícone de seta para atributos numéricos
                         let arrowIcon = null;
                         if (typeof valor === "number" && typeof valorCorreto === "number") {
                             if (valor < valorCorreto) {
-                                arrowIcon = <FaArrowUp className="arrow-icon up" />;
+                                arrowIcon = <FaArrowUp className="arrow-icon" />;
                             } else if (valor > valorCorreto) {
-                                arrowIcon = <FaArrowDown className="arrow-icon down" />;
+                                arrowIcon = <FaArrowDown className="arrow-icon" />;
                             }
                         }
 
                         return (
-                            <div key={index} className={`feedback-box ${correto ? 'correct' : 'incorrect'}`}>
+                            <div key={index} className={`feedback-box ${classeCor}`}>
                                 {arrowIcon}
                                 <span className="feedback-value">{String(valor)}</span>
                             </div>
