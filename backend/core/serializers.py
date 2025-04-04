@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Pessoa
-from .models import Animal
 
 # transforma objetos python em JSON
 
