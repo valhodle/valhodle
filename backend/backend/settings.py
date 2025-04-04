@@ -27,11 +27,7 @@ SECRET_KEY = 'django-insecure-_fndxs@9s$urxv-0*^82^4b5vzp(@nn@rcl428mucl!5q-g)sj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = [
-    "valhodle.onrender.com",
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -132,9 +128,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
