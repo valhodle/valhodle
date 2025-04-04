@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { iniciarJogo, verificarTentativa } from '../api/api';
 import Feedback from './feedback';
 import './game.css';
-import { FaGamepad, FaQuoteRight, FaArrowRight } from 'react-icons/fa';
+import { FaGamepad, FaArrowRight, FaMedal, FaPlay } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 import Ranking from './ranking';
 
@@ -71,13 +71,18 @@ const Game = () => {
                 >
                     <FaGamepad className="modo-icon" />
                 </button>
-                <Tooltip id="tooltip-normal" place="top" content="Modo Normal" />
+                <Tooltip id="tooltip-normal" place="top" content="Modo normal" />
+
+                <button 
+                    className={`modo-btn ${mostrarRanking ? "selected" : ""}`} 
+                    onClick={() => setMostrarRanking(true)} 
+                    data-tooltip-id="tooltip-ranking"
+                >
+                    <FaMedal className="modo-icon" />
+                </button>
+                <Tooltip id="tooltip-ranking" place="top" content="Ranking" />
             </div>
-
-            <button className="btn-iniciar" onClick={() => setMostrarRanking(true)}>
-                Ver Ranking
-            </button>
-
+            
             {mostrarRanking && <Ranking onClose={() => setMostrarRanking(false)} />}
             
             <div className="input-container">
@@ -95,7 +100,7 @@ const Game = () => {
             </div>
 
             <button className="btn-iniciar" onClick={iniciar}>
-                Iniciar
+                <FaPlay />
             </button>
 
             {jogoId && (
@@ -105,10 +110,15 @@ const Game = () => {
                         placeholder="Digite um nome..."
                         value={tentativa}
                         onChange={(e) => setTentativa(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                enviarTentativa();
+                            }
+                        }}
                         className="input-tentativa"
                     />
                     <button className="btn-enviar" onClick={enviarTentativa}>
-                        <FaArrowRight />
+                        Enviar 
                     </button>
                 </div>
             )}
