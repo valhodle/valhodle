@@ -1,378 +1,445 @@
 [
-{
-    "model": "core.pessoa",
-    "pk": 1,
-    "fields": {
-        "nome": "Sabrina",
-        "ano": 2003,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
+    {
+        "model": "core.pessoa",
+        "pk": 1,
+        "fields": {
+            "nome": "Sabrina",
+            "ano": 2003,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "n√£o"
+            ],
+            "altura": 167.0,
+            "area_estudo": "Exatas",
+            "time": "nenhum"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 2,
+        "fields": {
+            "nome": "Marin",
+            "ano": 2001,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "sim"
+            ],
+            "altura": 185.0,
+            "area_estudo": "Exatas",
+            "time": "FNATIC/100T"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 3,
+        "fields": {
+            "nome": "Timtim",
+            "ano": 2002,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 4,
+        "fields": {
+            "nome": "Daila",
+            "ano": 2001,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 165.0,
+            "area_estudo": "Exatas",
+            "time": "GENG"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 5,
+        "fields": {
+            "nome": "Adachi",
+            "ano": 2001,
+            "oculos": [
+                "sim",
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 182.0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 6,
+        "fields": {
+            "nome": "IME Nick",
+            "ano": 2004,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 7,
+        "fields": {
+            "nome": "Souza",
+            "ano": 2001,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 8,
+        "fields": {
+            "nome": "Santana",
+            "ano": 2002,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 9,
+        "fields": {
+            "nome": "Freire",
+            "ano": 2002,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 10,
+        "fields": {
+            "nome": "Martelli",
+            "ano": 2002,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 11,
+        "fields": {
+            "nome": "Luna",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 12,
+        "fields": {
+            "nome": "Susana",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 13,
+        "fields": {
+            "nome": "Andrew",
+            "ano": 1998,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "n√£o"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 14,
+        "fields": {
+            "nome": "Uranium",
+            "ano": 2002,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "n√£o"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 15,
+        "fields": {
+            "nome": "Magussy",
+            "ano": 2002,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "n√£o"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": "S√£o Paulo"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 16,
+        "fields": {
+            "nome": "Xurso",
+            "ano": 2002,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "sim"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 17,
+        "fields": {
+            "nome": "Ju kru",
+            "ano": 2003,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 160.0,
+            "area_estudo": NaN,
+            "time": "Los Ratones"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 18,
+        "fields": {
+            "nome": "Fefa",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 19,
+        "fields": {
+            "nome": "KZ",
+            "ano": 2004,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "sim"
+            ],
+            "altura": 173.0,
+            "area_estudo": "Humanas",
+            "time": "Loud/Pain"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 20,
+        "fields": {
+            "nome": "Edu Barco",
+            "ano": 2001,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 21,
+        "fields": {
+            "nome": "Vini Barros",
+            "ano": 2001,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "sim"
+            ],
+            "altura": 180.0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 22,
+        "fields": {
+            "nome": "Vitinho",
+            "ano": 2002,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": NaN,
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 23,
+        "fields": {
+            "nome": "Mello",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 24,
+        "fields": {
+            "nome": "Merilo",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": "G2"
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 25,
+        "fields": {
+            "nome": "Zika",
+            "ano": 0,
+            "oculos": [
+                "n√£o"
+            ],
+            "tatuagem": [
+                "nan"
+            ],
+            "altura": 0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 26,
+        "fields": {
+            "nome": "DD",
+            "ano": 2000,
+            "oculos": [
+                "sim"
+            ],
+            "tatuagem": [
+                "sim"
+            ],
+            "altura": 178.0,
+            "area_estudo": "Exatas",
+            "time": NaN
+        }
     }
-},
-{
-    "model": "core.pessoa",
-    "pk": 2,
-    "fields": {
-        "nome": "Marin",
-        "ano": 2001,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 3,
-    "fields": {
-        "nome": "Timtim",
-        "ano": 2002,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 4,
-    "fields": {
-        "nome": "Daila",
-        "ano": 2001,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 5,
-    "fields": {
-        "nome": "Adachi",
-        "ano": 2001,
-        "oculos": [
-            "Sim",
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 6,
-    "fields": {
-        "nome": "IME Nick",
-        "ano": 2004,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 7,
-    "fields": {
-        "nome": "Souza",
-        "ano": 2001,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 8,
-    "fields": {
-        "nome": "Santana",
-        "ano": 2002,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 9,
-    "fields": {
-        "nome": "Freire",
-        "ano": 2002,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 10,
-    "fields": {
-        "nome": "Martelli",
-        "ano": 2002,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 11,
-    "fields": {
-        "nome": "Luna",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 12,
-    "fields": {
-        "nome": "Susana",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 13,
-    "fields": {
-        "nome": "Andrew",
-        "ano": 1998,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 14,
-    "fields": {
-        "nome": "Uranium",
-        "ano": 2002,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 15,
-    "fields": {
-        "nome": "Magussy",
-        "ano": 2002,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 16,
-    "fields": {
-        "nome": "Xurso",
-        "ano": 2002,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 17,
-    "fields": {
-        "nome": "Ju kru",
-        "ano": 2003,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 18,
-    "fields": {
-        "nome": "Fefa",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 19,
-    "fields": {
-        "nome": "KZ",
-        "ano": 2004,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 20,
-    "fields": {
-        "nome": "Edu Barco",
-        "ano": 2001,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 21,
-    "fields": {
-        "nome": "Vini Barros",
-        "ano": 2001,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 22,
-    "fields": {
-        "nome": "Vitinho",
-        "ano": 2002,
-        "oculos": [
-            "Sim"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 23,
-    "fields": {
-        "nome": "Mello",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 24,
-    "fields": {
-        "nome": "Merilo",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-},
-{
-    "model": "core.pessoa",
-    "pk": 25,
-    "fields": {
-        "nome": "Zika",
-        "ano": 0,
-        "oculos": [
-            "N„o"
-        ],
-        "tatuagem": [],
-        "altura": 0,
-        "area_estudo": "n„o informado",
-        "time": "nenhum"
-    }
-}
 ]
