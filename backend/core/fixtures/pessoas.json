@@ -34,5 +34,167 @@
         "ano": 2001,
         "oculos": false
     }
+},
+{
+    "model": "core.pessoa",
+    "pk": 5,
+    "fields": {
+        "nome": "Adachi",
+        "ano": 2001,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 6,
+    "fields": {
+        "nome": "IME Nick",
+        "ano": 2004,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 7,
+    "fields": {
+        "nome": "Souza",
+        "ano": 2001,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 8,
+    "fields": {
+        "nome": "Santana",
+        "ano": 2002,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 9,
+    "fields": {
+        "nome": "Freire",
+        "ano": 2002,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 10,
+    "fields": {
+        "nome": "Martelli",
+        "ano": 2002,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 11,
+    "fields": {
+        "nome": "Luna",
+        "ano": 0,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 12,
+    "fields": {
+        "nome": "Susana",
+        "ano": 0,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 13,
+    "fields": {
+        "nome": "Andrew",
+        "ano": 1998,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 14,
+    "fields": {
+        "nome": "Uranium",
+        "ano": 2002,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 15,
+    "fields": {
+        "nome": "Magussy",
+        "ano": 2002,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 16,
+    "fields": {
+        "nome": "Xurso",
+        "ano": 2002,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 17,
+    "fields": {
+        "nome": "Ju kru",
+        "ano": 2003,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 18,
+    "fields": {
+        "nome": "Fefa",
+        "ano": 0,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 19,
+    "fields": {
+        "nome": "KZ",
+        "ano": 2004,
+        "oculos": false
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 20,
+    "fields": {
+        "nome": "Edu Barco",
+        "ano": 2001,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 21,
+    "fields": {
+        "nome": "Vini Barros",
+        "ano": 2001,
+        "oculos": true
+    }
+},
+{
+    "model": "core.pessoa",
+    "pk": 22,
+    "fields": {
+        "nome": "Vitinho",
+        "ano": 2002,
+        "oculos": true
+    }
 }
 ]
