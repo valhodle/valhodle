@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Pessoa, Jogo
 from django.shortcuts import render
+from django.db.models import Avg, Count
 import random
 
 # Cria um novo jogo e escolhe um amigo aleatório como alvo
@@ -112,6 +113,20 @@ def verificar_tentativa(request):
         'feedback': feedback, 
         'tentativas': jogo.tentativas
     })
+
+@api_view(['GET'])
+def ranking(request):
+    stats = (
+        Jogo.objects.filter(concluido=True)
+        .values('jogador')
+        .annotate(
+            jogos=Count('id'),
+            media_tentativas=Avg('tentativas')
+        )
+        .order_by('media_tentativas')[:10]
+    )
+
+    return Response(stats)
 
 def pessoas_view(request):
     pessoas = Pessoa.objects.all()

@@ -1,0 +1,40 @@
+.ranking-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.ranking-modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.ranking-tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ranking-tabela th, .ranking-tabela td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.fechar-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    float: right;
+}

@@ -168,7 +168,6 @@ python manage.py runserver
 
 ---
 
-
 ## Draft
 
 ```sh

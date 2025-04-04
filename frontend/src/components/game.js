@@ -4,6 +4,7 @@ import Feedback from './feedback';
 import './game.css';
 import { FaGamepad, FaQuoteRight, FaArrowRight } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
+import Ranking from './ranking';
 
 const Game = () => {
     const [jogoId, setJogoId] = useState(null);
@@ -14,6 +15,8 @@ const Game = () => {
     const [jogador, setJogador] = useState('');
     const [modo, setModo] = useState('normal');
     const [tentativa, setTentativa] = useState('');
+
+    const [mostrarRanking, setMostrarRanking] = useState(false);
 
     const iniciar = async () => {
         try {
@@ -70,6 +73,12 @@ const Game = () => {
                 </button>
                 <Tooltip id="tooltip-normal" place="top" content="Modo Normal" />
             </div>
+
+            <button className="btn-iniciar" onClick={() => setMostrarRanking(true)}>
+                Ver Ranking
+            </button>
+
+            {mostrarRanking && <Ranking onClose={() => setMostrarRanking(false)} />}
             
             <div className="input-container">
                 <div className="input-wrapper">

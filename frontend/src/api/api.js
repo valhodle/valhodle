@@ -42,3 +42,21 @@ export const verificarTentativa = async (jogoId, tentativa) => {
         return null;
     }
 };
+
+export const buscarRanking = async () => {
+    try {
+        const response = await fetch(`${API_URL}/ranking/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) {
+            throw new Error("Erro ao buscar ranking");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Erro ao buscar ranking:", error);
+        return null;
+    }
+};
