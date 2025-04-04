@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ranking.css';
+import { FaTimes } from 'react-icons/fa';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -21,12 +22,14 @@ const Ranking = ({ onClose }) => {
     return (
         <div className="ranking-overlay">
             <div className="ranking-modal">
-                <button className="fechar-btn" onClick={onClose}>Fechar</button>
-                <h2>🏆 Ranking dos melhores jogadores</h2>
+                <button className="fechar-btn" onClick={onClose}>
+                    <FaTimes />
+                </button>
+                <h2 className="ranking-titulo">🏆 GOATS</h2>
                 <table className="ranking-tabela">
                     <thead>
                         <tr>
-                            <th>Posição</th>
+                            <th>#</th>
                             <th>Jogador</th>
                             <th>Jogos</th>
                             <th>Média de tentativas</th>

@@ -1,10 +1,8 @@
 .ranking-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,29 +10,79 @@
 }
 
 .ranking-modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    max-height: 90%;
+    background: #fdfdfd;
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    max-height: 85%;
+    width: 90%;
+    max-width: 700px;
     overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fechar-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #888;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.fechar-btn:hover {
+    color: #333;
+}
+
+.ranking-titulo {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
 }
 
 .ranking-tabela {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
 }
 
-.ranking-tabela th, .ranking-tabela td {
-    padding: 10px;
-    border: 1px solid #ccc;
+.ranking-tabela th {
+    background-color: #f0f2f5;
+    padding: 12px;
+    border-radius: 8px 8px 0 0;
     text-align: center;
+    font-weight: 600;
+    color: #555;
 }
 
-.fechar-btn {
-    background: red;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    float: right;
+.ranking-tabela td {
+    background-color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.ranking-tabela tr:hover td {
+    background-color: #f9f9f9;
+    transition: background-color 0.2s;
 }
