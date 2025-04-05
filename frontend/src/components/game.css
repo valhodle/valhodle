@@ -138,7 +138,7 @@ body {
 
 .btn-iniciar:hover {
     background: linear-gradient(145deg, #d18b23, #cc6715);
-    transform: translateY(-1px) scale(1.03);
+    transform: scale(1.07);
 }
 
 .btn-iniciar:active {
