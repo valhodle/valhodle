@@ -13,7 +13,7 @@
             ],
             "altura": 167.0,
             "area_estudo": "Exatas",
-            "time": "nenhum",
+            "time": "none",
             "animal_de_estimacao": "Cachorro"
         }
     },
@@ -31,7 +31,7 @@
             ],
             "altura": 185.0,
             "area_estudo": "Exatas",
-            "time": "FNATIC/100T",
+            "time": "Fnatic;SPFC",
             "animal_de_estimacao": "Cachorro"
         }
     },
@@ -63,12 +63,12 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "não"
             ],
             "altura": 165.0,
             "area_estudo": "Exatas",
             "time": "GENG",
-            "animal_de_estimacao": "Cachorro/Gato"
+            "animal_de_estimacao": "Cachorro;Gato"
         }
     },
     {
@@ -117,11 +117,11 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "não"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
+            "altura": 173.0,
+            "area_estudo": "none",
+            "time": "none",
             "animal_de_estimacao": "Cachorro"
         }
     },
@@ -153,12 +153,12 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "não"
             ],
-            "altura": 0,
+            "altura": 174.0,
             "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "time": "Internacional;Los ratones",
+            "animal_de_estimacao": "Cachorro;Gato"
         }
     },
     {
@@ -265,7 +265,7 @@
             ],
             "altura": 0,
             "area_estudo": NaN,
-            "time": "São Paulo",
+            "time": "SPFC",
             "animal_de_estimacao": "Gato"
         }
     },
@@ -297,12 +297,12 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "não"
             ],
             "altura": 160.0,
-            "area_estudo": NaN,
+            "area_estudo": "Exatas",
             "time": "Los Ratones",
-            "animal_de_estimacao": NaN
+            "animal_de_estimacao": "Cachorro"
         }
     },
     {
@@ -400,16 +400,16 @@
         "pk": 23,
         "fields": {
             "nome": "Mello",
-            "ano": 0,
+            "ano": 2002,
             "oculos": [
-                "não"
+                "sim"
             ],
             "tatuagem": [
-                "nan"
+                "não"
             ],
-            "altura": 0,
+            "altura": 179.0,
             "area_estudo": "Exatas",
-            "time": NaN,
+            "time": "PaiN;SPFC",
             "animal_de_estimacao": NaN
         }
     },
@@ -463,7 +463,7 @@
             ],
             "altura": 178.0,
             "area_estudo": "Exatas",
-            "time": NaN,
+            "time": "none",
             "animal_de_estimacao": "Cachorro"
         }
     }

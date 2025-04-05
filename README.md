@@ -74,7 +74,7 @@ cd core/fixtures
 ```sh
 python pessoas.py
 ```
-3. Carregue os novos dados no banco:
+3. Carregue os novos dados no banco em `/backend`:
 ```sh
 cd ../..
 python manage.py loaddata core/fixtures/pessoas.json

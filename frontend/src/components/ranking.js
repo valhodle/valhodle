@@ -15,7 +15,10 @@ const Ranking = ({ onClose }) => {
                 }
                 return res.json();
             })
-            .then((data) => setRanking(data))
+            .then((data) => {
+                const rankingFiltrado = data.filter(item => item.jogador.toLowerCase() !== "anonimo");
+                setRanking(rankingFiltrado);
+            })
             .catch((err) => console.error("Erro ao carregar ranking:", err));
     }, []);
 

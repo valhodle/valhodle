@@ -28,38 +28,50 @@ const FeedbackTable = ({ tentativas }) => {
                 ))}
             </div>
 
-            {tentativas.map((tentativa, tentativaIndex) => (
-                <div key={tentativaIndex} className="feedback-row">
-                    {atributos.map((atributo, index) => {
-                        const { valor, correto, valorCorreto } = tentativa.feedback[atributo];
+            {tentativas.map((tentativa, tentativaIndex) => {
+                const isPrimeiraLinha = tentativaIndex === 0;
+                const rowKey = `tentativa-${tentativaIndex}-${JSON.stringify(tentativa.feedback)}`;
 
-                        // Define a classe com base na resposta
-                        let classeCor = "incorrect";
-                        if (correto === "certo") {
-                            classeCor = "correct";
-                        } else if (correto === "meio") {
-                            classeCor = "partial";
-                        }
+                return (
+                    <div
+                        key={rowKey}
+                        className={`feedback-row ${isPrimeiraLinha ? 'primeira-tentativa' : ''}`}
+                    >
+                        {atributos.map((atributo, index) => {
+                            const { valor, correto, valorCorreto } = tentativa.feedback[atributo];
 
-                        // Ícone de seta para atributos numéricos
-                        let arrowIcon = null;
-                        if (typeof valor === "number" && typeof valorCorreto === "number") {
-                            if (valor < valorCorreto) {
-                                arrowIcon = <FaArrowUp className="arrow-icon" />;
-                            } else if (valor > valorCorreto) {
-                                arrowIcon = <FaArrowDown className="arrow-icon" />;
+                            let classeCor = "incorrect";
+                            if (correto === "certo") {
+                                classeCor = "correct";
+                            } else if (correto === "meio") {
+                                classeCor = "partial";
                             }
-                        }
 
-                        return (
-                            <div key={index} className={`feedback-box ${classeCor}`}>
-                                {arrowIcon}
-                                <span className="feedback-value">{String(valor)}</span>
-                            </div>
-                        );
-                    })}
-                </div>
-            ))}
+                            let arrowIcon = null;
+                            if (typeof valor === "number" && typeof valorCorreto === "number") {
+                                if (valor < valorCorreto) {
+                                    arrowIcon = <FaArrowUp className="arrow-icon" />;
+                                } else if (valor > valorCorreto) {
+                                    arrowIcon = <FaArrowDown className="arrow-icon" />;
+                                }
+                            }
+
+                            const style = isPrimeiraLinha
+                                ? { animationDelay: `${index * 0.1}s` }
+                                : {};
+
+                            const boxClass = `feedback-box ${classeCor} ${isPrimeiraLinha ? 'aparecendo' : ''}`;
+
+                            return (
+                                <div key={index} className={boxClass} style={style}>
+                                    {arrowIcon}
+                                    <span className="feedback-value">{String(valor)}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                );
+            })}
         </div>
     );
 };

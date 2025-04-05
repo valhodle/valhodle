@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { iniciarJogo, verificarTentativa } from '../api/api';
 import Feedback from './feedback';
 import './game.css';
-import { FaGamepad, FaArrowRight, FaMedal, FaPlay } from 'react-icons/fa';
+import { FaGamepad, FaArrowRight, FaMedal, FaPlay, FaStar } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 import Ranking from './ranking';
 
@@ -32,7 +32,6 @@ const Game = () => {
 
     const enviarTentativa = async () => {
         if (!tentativa) {
-            alert("Digite uma tentativa antes de enviar!");
             return;
         }
     
@@ -40,7 +39,6 @@ const Game = () => {
             const resposta = await verificarTentativa(jogoId, tentativa);
 
             if (resposta.mensagem === "Amigo não encontrado!") {
-                alert("Nome não encontrado. Tente novamente.");
                 return;
             }
 
@@ -81,7 +79,16 @@ const Game = () => {
                     <FaMedal className="modo-icon" />
                 </button>
                 <Tooltip id="tooltip-ranking" place="top" content="Ranking" />
+
+                <button 
+                    className="modo-btn modo-breve" 
+                    data-tooltip-id="tooltip-em-breve"
+                >
+                    <FaStar className="modo-icon" />
+                </button>
+                <Tooltip id="tooltip-em-breve" place="top" content="Novos modos em breve" />
             </div>
+
             
             {mostrarRanking && <Ranking onClose={() => setMostrarRanking(false)} />}
             
