@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { iniciarJogo, verificarTentativa } from '../api/api';
 import Feedback from './feedback';
 import Ranking from './ranking';
 import './game.css';
-import { FaGamepad, FaArrowRight, FaMedal, FaPlay, FaStar } from 'react-icons/fa';
+import { FaGamepad, FaMedal, FaPlay, FaStar } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 const Game = () => {
@@ -18,6 +18,8 @@ const Game = () => {
 
     const [mostrarRanking, setMostrarRanking] = useState(false);
     const [tempoRestante, setTempoRestante] = useState('');
+
+    const tentativaInputRef = useRef(null);
 
     const formatarTempo = (ms) => {
         const horas = Math.floor(ms / 1000 / 60 / 60);
@@ -81,8 +83,21 @@ const Game = () => {
         return () => clearInterval(intervalo);
     }, [atualizarTempo]);
 
+    // Foca no input da tentativa assim que jogoId estiver disponível
+    useEffect(() => {
+        if (jogoId && tentativaInputRef.current) {
+            tentativaInputRef.current.focus();
+        }
+    }, [jogoId]);
+
     const handleKeyPress = (e) => {
         if (e.key === "Enter") handleEnviarTentativa();
+    };
+
+    const handleJogadorKeyPress = (e) => {
+        if (e.key === "Enter") {
+            handleIniciarJogo();
+        }
     };
 
     const renderModoBotao = (modoAtual, icone, tooltip, onClick, selecionado = false) => (
@@ -118,6 +133,7 @@ const Game = () => {
                         placeholder="Jogador"
                         value={jogador}
                         onChange={(e) => setJogador(e.target.value)}
+                        onKeyDown={handleJogadorKeyPress}
                         data-tooltip-id="tooltip-jogador"
                     />
                     <Tooltip id="tooltip-jogador" place="top" content="Digite seu nome ou jogue anonimamente" />
@@ -139,12 +155,13 @@ const Game = () => {
             {jogoId && !acertou && (
                 <div className="tentativa-container">
                     <input
+                        ref={tentativaInputRef}
                         type="text"
                         placeholder="Digite um nome..."
                         value={tentativa}
                         onChange={(e) => setTentativa(e.target.value)}
                         onKeyDown={handleKeyPress}
-                        className="input-tentativa"
+                        className="input-tentativa" 
                     />
                     <button className="btn-enviar" onClick={handleEnviarTentativa}>
                         Enviar
