@@ -21,6 +21,9 @@ const Game = () => {
 
     const tentativaInputRef = useRef(null);
 
+    const [erroServidor, setErroServidor] = useState(false);
+    const timeoutRef = useRef(null);
+
     const formatarTempo = (ms) => {
         const horas = Math.floor(ms / 1000 / 60 / 60);
         const minutos = Math.floor((ms / 1000 / 60) % 60);
@@ -37,12 +40,19 @@ const Game = () => {
     }, []);
 
     const handleIniciarJogo = useCallback(async () => {
+        setErroServidor(false); 
+    
+        timeoutRef.current = setTimeout(() => {
+            setErroServidor(true);
+        }, 8000);
+    
         try {
             const nome = jogador.trim() || 'Anonimo';
             const jogo = await iniciarJogo(nome, modo);
-
+    
+            clearTimeout(timeoutRef.current); 
             setJogoId(jogo.jogo_id);
-
+    
             if (jogo.mensagem?.includes("já jogou hoje")) {
                 setFeedbacks([{ feedback: jogo.feedback, acertou: jogo.acertou }]);
                 setAcertou(jogo.acertou);
@@ -53,9 +63,12 @@ const Game = () => {
                 setTentativas(0);
             }
         } catch (err) {
+            clearTimeout(timeoutRef.current); 
             console.error("Erro ao iniciar o jogo:", err);
+            setErroServidor(true);
         }
     }, [jogador, modo]);
+    
 
     const handleEnviarTentativa = useCallback(async () => {
         if (!tentativa) return;
@@ -83,7 +96,6 @@ const Game = () => {
         return () => clearInterval(intervalo);
     }, [atualizarTempo]);
 
-    // Foca no input da tentativa assim que jogoId estiver disponível
     useEffect(() => {
         if (jogoId && tentativaInputRef.current) {
             tentativaInputRef.current.focus();
@@ -113,13 +125,7 @@ const Game = () => {
         </>
     );
 
-    const alturaParaIntervalo = (altura) => {
-        const alturaNum = parseInt(altura);
-        if (isNaN(alturaNum)) return altura;
-        const intervaloInferior = Math.floor(alturaNum / 10) * 10;
-        const intervaloSuperior = intervaloInferior + 10;
-        return `${intervaloInferior}-${intervaloSuperior}`;
-    };
+
     
 
     return (
@@ -149,14 +155,31 @@ const Game = () => {
                 </div>
             </div>
 
-            <button className="btn-iniciar" onClick={handleIniciarJogo}>
-                <FaPlay />
-            </button>
+            <div className="container-botoes-iniciar">
+                <button className="btn-iniciar" onClick={handleIniciarJogo}>
+                    <FaPlay />
+                </button>
+
+                {erroServidor && (
+                    <button className="btn-ajuda" data-tooltip-id="tooltip-ajuda">
+                        ?
+                    </button>
+                )}
+
+                <Tooltip 
+                    id="tooltip-ajuda" 
+                    place="right" 
+                    content="O servidor pode estar demorando para responder. Tente novamente em alguns segundos." 
+                />
+            </div>
+
+
+
 
             {jogoId && acertou && (
                 <div className="contador-container">
                     <p className="contador-texto">
-                        Próximo jogo em: <strong>{tempoRestante}</strong>
+                        Próximo valhodle em: <strong>{tempoRestante}</strong>
                     </p>
                 </div>
             )}
