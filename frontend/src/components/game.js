@@ -49,11 +49,16 @@ const Game = () => {
         try {
             const nome = jogador.trim() || 'Anonimo';
             const jogo = await iniciarJogo(nome, modo);
-    
-            clearTimeout(timeoutRef.current); 
+
+            clearTimeout(timeoutRef.current);
+
+            if (!jogo || !jogo.jogo_id) {
+                throw new Error("Resposta inesperada do servidor");
+            }
+
             setJogoId(jogo.jogo_id);
-    
-            if (jogo.mensagem?.includes("já jogou hoje")) {
+
+            if (nome.toLowerCase() !== 'anonimo' && jogo.mensagem?.includes("já jogou hoje")) {
                 setFeedbacks([{ feedback: jogo.feedback, acertou: jogo.acertou }]);
                 setAcertou(jogo.acertou);
                 setTentativas(jogo.tentativas);
@@ -63,10 +68,11 @@ const Game = () => {
                 setTentativas(0);
             }
         } catch (err) {
-            clearTimeout(timeoutRef.current); 
+            clearTimeout(timeoutRef.current);
             console.error("Erro ao iniciar o jogo:", err);
             setErroServidor(true);
         }
+        
     }, [jogador, modo]);
     
 
