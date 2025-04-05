@@ -12,8 +12,12 @@ Antes de rodar o frontend, instale as dependências:
 cd valhodle/frontend
 npm install
 ```
+### 2. Rode a build do frontend
+```sh
+npm run build
+```
 
-### 2. Rodar o servidor de desenvolvimento
+### 3. Rode o servidor de desenvolvimento
 Para iniciar o frontend, execute:
 ```sh
 npm start
