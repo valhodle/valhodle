@@ -4,25 +4,79 @@ from .models import Pessoa, Jogo
 from django.shortcuts import render
 from django.db.models import Avg, Count
 import random
+from datetime import datetime, timedelta
+import hashlib
 
-# Cria um novo jogo e escolhe um amigo aleatório como alvo
+def escolher_alvo_diario():
+    pessoas = list(Pessoa.objects.all())
+
+    if not pessoas:
+        return None
+
+    hoje = datetime.now().strftime("%Y%m%d")
+    seed = int(hashlib.sha256(hoje.encode()).hexdigest(), 16)
+    random.seed(seed)
+
+    return random.choice(pessoas)
+
 @api_view(['POST'])
 def iniciar_jogo(request):
-    jogador = request.data.get('jogador')
-    modo = request.data.get('modo', 'normal')  # Padrão: modo normal
+    jogador = request.data.get('jogador', '').strip().title()
+    modo = request.data.get('modo', 'normal')
 
     if not jogador:
         return Response({'erro': 'Nome do jogador é obrigatório'}, status=400)
-    
+
     if modo not in ['normal', 'frase']:
         return Response({'erro': 'Modo inválido. Escolha "normal" ou "frase".'}, status=400)
 
-    alvo = random.choice(Pessoa.objects.all())  # Escolhe uma pessoa aleatória
+    alvo = escolher_alvo_diario()
+    if not alvo:
+        return Response({'erro': 'Nenhuma pessoa cadastrada como alvo.'}, status=500)
+
+    jogo_existente = Jogo.objects.filter(jogador=jogador, alvo=alvo, concluido=True).first()
+
+    agora = datetime.now()
+    meia_noite = (agora + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+    segundos_restantes = int((meia_noite - agora).total_seconds())
+
+    if jogo_existente:
+        feedback = {}
+        if modo == "normal":
+            for field in Pessoa._meta.fields:
+                if field.name not in ["id"]:
+                    valor_alvo = getattr(alvo, field.name)
+                    feedback[field.name] = {
+                        "valor": valor_alvo,
+                        "correto": "certo",
+                        "valorCorreto": valor_alvo
+                    }
+        elif modo == "frase":
+            feedback = {
+                "frase": {
+                    "valor": alvo.frase,
+                    "correto": True
+                }
+            }
+
+        return Response({
+            'mensagem': 'Você já jogou hoje! Aqui está sua jogada registrada.',
+            'jogo_id': jogo_existente.id, 
+            'acertou': True,
+            'feedback': feedback,
+            'tentativas': jogo_existente.tentativas,
+            'tempo_restante': segundos_restantes
+        })
+
     jogo = Jogo.objects.create(jogador=jogador, alvo=alvo, modo=modo)
 
-    return Response({'mensagem': 'Jogo iniciado!', 'jogo_id': jogo.id, 'modo': modo})
+    return Response({
+        'mensagem': 'Jogo iniciado!',
+        'jogo_id': jogo.id,
+        'modo': modo,
+        'tempo_restante': segundos_restantes 
+    })
 
-# Verifica a tentativa do jogador e retorna as dicas
 @api_view(['POST'])
 def verificar_tentativa(request):
     jogo_id = request.data.get('jogo_id')
@@ -36,7 +90,6 @@ def verificar_tentativa(request):
     except Jogo.DoesNotExist:
         return Response({'erro': 'Jogo não encontrado ou já finalizado'}, status=404)
 
-
     tentativa = Pessoa.objects.filter(nome__iexact=tentativa_nome).first()
 
     if not tentativa:
@@ -49,7 +102,6 @@ def verificar_tentativa(request):
     jogo.tentativas += 1
     jogo.save()
 
-
     alvo = jogo.alvo
 
     feedback = {}
@@ -59,23 +111,16 @@ def verificar_tentativa(request):
                 valor_tentativa = getattr(tentativa, field.name)
                 valor_alvo = getattr(alvo, field.name)
 
-                # Se ambos forem listas
                 if isinstance(valor_tentativa, list) and isinstance(valor_alvo, list):
                     intersecao = set(valor_tentativa) & set(valor_alvo)
                     if intersecao:
                         correto = "certo" if set(valor_tentativa) == set(valor_alvo) else "meio"
                     else:
                         correto = "errado"
-                
-                # Se apenas o valor do alvo for lista
                 elif isinstance(valor_alvo, list):
                     correto = "meio" if valor_tentativa in valor_alvo else "errado"
-
-                # Se apenas o valor da tentativa for lista
                 elif isinstance(valor_tentativa, list):
                     correto = "meio" if valor_alvo in valor_tentativa else "errado"
-
-                # Ambos são valores simples
                 else:
                     correto = "certo" if valor_tentativa == valor_alvo else "errado"
 
@@ -84,7 +129,6 @@ def verificar_tentativa(request):
                     "correto": correto,
                     "valorCorreto": valor_alvo
                 }
-    
     elif jogo.modo == "frase":
         feedback = {
             "frase": {
@@ -98,7 +142,7 @@ def verificar_tentativa(request):
         jogo.save()
 
         for key in feedback:
-           feedback[key]["correto"] = "certo"
+            feedback[key]["correto"] = "certo"
 
         return Response({
             'mensagem': 'Parabéns! Você acertou!', 

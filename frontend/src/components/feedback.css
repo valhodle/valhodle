@@ -44,36 +44,44 @@
 
 .correct {
     background-color: green;
-    color: rgb(9, 71, 9); /* Define a cor base para a seta */
+    color: rgb(9, 71, 9); 
+}
+
+.correct:hover {
+    background: rgb(0, 153, 0);
 }
 
 .incorrect {
-    background-color: red;
-    color: rgb(58, 10, 10); /* Define a cor base para a seta */
+    background-color: rgb(204, 0, 0);
+    color: rgb(58, 10, 10);
+}
+
+.incorrect:hover {
+    background: rgb(255, 49, 49);
 }
 
 .partial {
-    background-color: orange;
-    color: rgb(85, 52, 6); /* tom terroso/amarelado para a seta */
+    background-color: rgb(221, 144, 0);
+    color: rgb(85, 52, 6); 
+}
+
+.partial:hover {
+    background: rgb(255, 168, 6);
 }
 
 .arrow-icon {
     position: absolute;
     font-size: 80px;
     z-index: 0;
-    color: currentColor; /* Herda a cor do box */
-    opacity: 0.4; /* Deixa a seta mais sutil */
+    color: currentColor; 
+    opacity: 0.4; 
 }
 
 .feedback-value {
     position: relative;
     z-index: 2;
-    color: white; /* Mantém o texto sempre branco */
+    color: white;
 }
-
-
-
-
 
 
 @keyframes virar {

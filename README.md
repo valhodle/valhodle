@@ -100,7 +100,7 @@ Endpoint: `POST /api/jogo/iniciar`
 ```
 
 #### Verificar uma tentativa
-Endpoint: `POST /api/jogo/verificar_tentativa`
+Endpoint: `POST /api/jogo/tentar`
 ```json
 {
   "jogo_id": 72,
