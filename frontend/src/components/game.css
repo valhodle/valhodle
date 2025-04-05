@@ -206,6 +206,21 @@ body {
 }
 
 
+.btn-ajuda-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.btn-ajuda {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 1.5rem;
+}
 
 
 
