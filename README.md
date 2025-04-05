@@ -84,6 +84,7 @@ Lembre-se de rodar as migrações novamente:
 ```sh
 python manage.py makemigrations core
 python manage.py migrate
+python manage.py runserver
 ```
 
 ### 5. Testar Endpoints

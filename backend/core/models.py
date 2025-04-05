@@ -7,9 +7,9 @@ class Pessoa(models.Model):
     oculos = models.JSONField(default=list) 
     tatuagem = models.JSONField(default=list) 
     altura = models.IntegerField(default=0)  
-    area_estudo = models.CharField(max_length=100, default="não informado")
-    time = models.CharField(max_length=100, default="nenhum")
-    animal_de_estimacao = models.CharField(max_length=100, default="nenhum")
+    area_estudo = models.JSONField(default=list) 
+    time = models.JSONField(default=list) 
+    animal_de_estimacao = models.JSONField(default=list) 
 
     def __str__(self):
         return self.nome

@@ -131,8 +131,12 @@ const Game = () => {
             )}
 
             <div>
+            {acertou && (
+                <h2 className="parabens">
+                    Parabéns! Você acertou em {tentativas} {tentativas === 1 ? 'tentativa' : 'tentativas'}!
+                </h2>
+                )}
                 <Feedback tentativas={feedbacks} />
-                {acertou && <h2 className="fontePadrao">Parabéns! Você acertou em {tentativas} tentativas!</h2>}
             </div>
         </div>
     );

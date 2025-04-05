@@ -12,9 +12,15 @@
                 "não"
             ],
             "altura": 167.0,
-            "area_estudo": "Exatas",
-            "time": "none",
-            "animal_de_estimacao": "Cachorro"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "none"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -30,9 +36,16 @@
                 "sim"
             ],
             "altura": 185.0,
-            "area_estudo": "Exatas",
-            "time": "Fnatic;SPFC",
-            "animal_de_estimacao": "Cachorro"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "Fnatic",
+                "SPFC"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -45,12 +58,18 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -66,9 +85,16 @@
                 "não"
             ],
             "altura": 165.0,
-            "area_estudo": "Exatas",
-            "time": "GENG",
-            "animal_de_estimacao": "Cachorro;Gato"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "GENG"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro",
+                "Gato"
+            ]
         }
     },
     {
@@ -81,12 +107,18 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
             "altura": 182.0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": "Gato"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Gato"
+            ]
         }
     },
     {
@@ -99,12 +131,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -120,9 +158,15 @@
                 "não"
             ],
             "altura": 173.0,
-            "area_estudo": "none",
-            "time": "none",
-            "animal_de_estimacao": "Cachorro"
+            "area_estudo": [
+                "none"
+            ],
+            "time": [
+                "none"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -135,12 +179,18 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": "Cachorro"
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -156,9 +206,17 @@
                 "não"
             ],
             "altura": 174.0,
-            "area_estudo": "Exatas",
-            "time": "Internacional;Los ratones",
-            "animal_de_estimacao": "Cachorro;Gato"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "Internacional",
+                "Los ratones"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro",
+                "Gato"
+            ]
         }
     },
     {
@@ -171,12 +229,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": "Cachorro"
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -189,12 +253,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -207,12 +277,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -227,10 +303,16 @@
             "tatuagem": [
                 "não"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": "Cachorro"
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -245,10 +327,16 @@
             "tatuagem": [
                 "não"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -263,10 +351,16 @@
             "tatuagem": [
                 "não"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": "SPFC",
-            "animal_de_estimacao": "Gato"
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "SPFC"
+            ],
+            "animal_de_estimacao": [
+                "Gato"
+            ]
         }
     },
     {
@@ -281,10 +375,16 @@
             "tatuagem": [
                 "sim"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -300,9 +400,15 @@
                 "não"
             ],
             "altura": 160.0,
-            "area_estudo": "Exatas",
-            "time": "Los Ratones",
-            "animal_de_estimacao": "Cachorro"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "Los Ratones"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     },
     {
@@ -315,12 +421,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -336,9 +448,16 @@
                 "sim"
             ],
             "altura": 173.0,
-            "area_estudo": "Humanas",
-            "time": "Loud;Pain",
-            "animal_de_estimacao": "Gato"
+            "area_estudo": [
+                "Humanas"
+            ],
+            "time": [
+                "Loud",
+                "Pain"
+            ],
+            "animal_de_estimacao": [
+                "Gato"
+            ]
         }
     },
     {
@@ -351,12 +470,18 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -372,9 +497,15 @@
                 "sim"
             ],
             "altura": 180.0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": "Gato"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Gato"
+            ]
         }
     },
     {
@@ -387,12 +518,18 @@
                 "sim"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": NaN,
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -408,9 +545,16 @@
                 "não"
             ],
             "altura": 179.0,
-            "area_estudo": "Exatas",
-            "time": "PaiN;SPFC",
-            "animal_de_estimacao": NaN
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "PaiN",
+                "SPFC"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -423,12 +567,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": "Exatas",
-            "time": "G2",
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "G2"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -441,12 +591,18 @@
                 "não"
             ],
             "tatuagem": [
-                "nan"
+                "sem info"
             ],
-            "altura": 0,
-            "area_estudo": "Exatas",
-            "time": NaN,
-            "animal_de_estimacao": NaN
+            "altura": 0.0,
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "sem info"
+            ]
         }
     },
     {
@@ -462,9 +618,15 @@
                 "sim"
             ],
             "altura": 178.0,
-            "area_estudo": "Exatas",
-            "time": "none",
-            "animal_de_estimacao": "Cachorro"
+            "area_estudo": [
+                "Exatas"
+            ],
+            "time": [
+                "none"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
         }
     }
 ]

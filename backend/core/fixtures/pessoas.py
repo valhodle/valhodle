@@ -17,9 +17,9 @@ def df_para_json(df, caminho_json):
                 "oculos": [v.strip() for v in str(row["oculos"]).split(";") if v.strip()],
                 "tatuagem": [v.strip() for v in str(row["tatuagem"]).split(";") if v.strip()],
                 "altura": float(row["altura"]) if pd.notna(row["altura"]) else 0,
-                "area_estudo": row.get("area_estudo", "não informado"),
-                "time": row.get("time", "nenhum"),
-                "animal_de_estimacao": row.get("animal_de_estimacao", "nenhum")
+                "area_estudo": [v.strip() for v in str(row["area_estudo"]).split(";") if v.strip()],
+                "time": [v.strip() for v in str(row["time"]).split(";") if v.strip()],
+                "animal_de_estimacao": [v.strip() for v in str(row["animal_de_estimacao"]).split(";") if v.strip()],
             }
         }
         pessoas.append(pessoa)

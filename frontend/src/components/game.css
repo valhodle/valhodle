@@ -43,9 +43,11 @@ body {
     transform-origin: center center; 
 }
   
-.fontePadrao {
+.parabens {
     color:antiquewhite;
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: -30px;
 }
   
 body {
@@ -116,7 +118,7 @@ body {
 
 
 .btn-iniciar {
-    background: linear-gradient(145deg, #caa544, #a36b1d);
+    background: linear-gradient(145deg, #e7af5b, #b35c15);
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -134,7 +136,7 @@ body {
 }
 
 .btn-iniciar:hover {
-    background: linear-gradient(145deg, #e7c25b, #b47126);
+    background: linear-gradient(145deg, #d18b23, #cc6715);
     transform: translateY(-1px) scale(1.03);
 }
 
@@ -175,13 +177,13 @@ body {
     align-items: center;
     justify-content: center;
     outline: none;
-    background: linear-gradient(145deg, #caa544, #a36b1d);
+    background: linear-gradient(145deg, #e7af5b, #b35c15);
     font-weight: bold;
     display: flex;  
 }
 
 .btn-enviar:hover {
-    background: linear-gradient(145deg, #e7c25b, #b47126);
+    background: linear-gradient(145deg, #d18b23, #cc6715);
     transform: translateY(-1px) scale(1.03);
     
 }
