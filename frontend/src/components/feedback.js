@@ -13,6 +13,15 @@ const NOMES_ATRIBUTOS = {
     "animal_de_estimacao": "Animal de estimação"
 };
 
+const alturaParaIntervalo = (altura) => {
+    const alturaNum = parseInt(altura);
+    if (isNaN(alturaNum)) return altura;
+    const inf = Math.floor(alturaNum / 10) * 10;
+    const sup = inf + 9;
+    return `${inf}-${sup}`;
+};
+
+
 const FeedbackTable = ({ tentativas }) => {
     if (!tentativas || tentativas.length === 0) return null;
 
@@ -48,7 +57,24 @@ const FeedbackTable = ({ tentativas }) => {
                             }
 
                             let arrowIcon = null;
-                            if (typeof valor === "number" && typeof valorCorreto === "number") {
+
+                            const getIntervalo = (altura) => {
+                                const alturaNum = parseInt(altura);
+                                if (isNaN(alturaNum)) return null;
+                                return Math.floor(alturaNum / 10); // ex: 167 -> 16 (representa 160-169)
+                            };
+
+                            if (atributo === "altura") {
+                                const intervaloValor = getIntervalo(valor);
+                                const intervaloCorreto = getIntervalo(valorCorreto);
+                                if (intervaloValor !== null && intervaloCorreto !== null) {
+                                    if (intervaloValor < intervaloCorreto) {
+                                        arrowIcon = <FaArrowUp className="arrow-icon" />;
+                                    } else if (intervaloValor > intervaloCorreto) {
+                                        arrowIcon = <FaArrowDown className="arrow-icon" />;
+                                    }
+                                }
+                            } else if (typeof valor === "number" && typeof valorCorreto === "number") {
                                 if (valor < valorCorreto) {
                                     arrowIcon = <FaArrowUp className="arrow-icon" />;
                                 } else if (valor > valorCorreto) {
@@ -65,7 +91,9 @@ const FeedbackTable = ({ tentativas }) => {
                             return (
                                 <div key={index} className={boxClass} style={style}>
                                     {arrowIcon}
-                                    <span className="feedback-value">{String(valor)}</span>
+                                    <span className="feedback-value">
+                                        {atributo === "altura" ? alturaParaIntervalo(valor) : String(valor)}
+                                    </span>
                                 </div>
                             );
                         })}

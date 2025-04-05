@@ -113,6 +113,15 @@ const Game = () => {
         </>
     );
 
+    const alturaParaIntervalo = (altura) => {
+        const alturaNum = parseInt(altura);
+        if (isNaN(alturaNum)) return altura;
+        const intervaloInferior = Math.floor(alturaNum / 10) * 10;
+        const intervaloSuperior = intervaloInferior + 10;
+        return `${intervaloInferior}-${intervaloSuperior}`;
+    };
+    
+
     return (
         <div>
             <h1 className="tituloLOL">Valhodle</h1>
