@@ -628,5 +628,29 @@
                 "Cachorro"
             ]
         }
+    },
+    {
+        "model": "core.pessoa",
+        "pk": 27,
+        "fields": {
+            "nome": "Tanaka",
+            "ano": 2002,
+            "oculos": [
+                "não"
+            ],
+            "tatuagem": [
+                "sem info"
+            ],
+            "altura": 0.0,
+            "area_estudo": [
+                "sem info"
+            ],
+            "time": [
+                "sem info"
+            ],
+            "animal_de_estimacao": [
+                "Cachorro"
+            ]
+        }
     }
 ]

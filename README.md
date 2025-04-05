@@ -68,7 +68,7 @@ python manage.py loaddata core/fixtures/pessoas.json
 Se precisar atualizar o banco de dados com os dados do Google Sheets, siga os passos:
 1. Navegue até a pasta correta:
 ```sh
-cd core/fixtures
+cd Valhodle/backend/core/fixtures
 ```
 2. Execute o script `pessoas.py` para atualizar `pessoas.json`:
 ```sh
