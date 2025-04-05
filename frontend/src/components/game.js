@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { iniciarJogo, verificarTentativa } from '../api/api';
 import Feedback from './feedback';
 import Ranking from './ranking';
 import './game.css';
-import { FaGamepad, FaArrowRight, FaMedal, FaPlay, FaStar, FaQuestionCircle } from 'react-icons/fa';
+import { FaGamepad, FaArrowRight, FaMedal, FaPlay, FaStar } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 const Game = () => {
@@ -18,11 +18,6 @@ const Game = () => {
 
     const [mostrarRanking, setMostrarRanking] = useState(false);
     const [tempoRestante, setTempoRestante] = useState('');
-
-    const [esperandoResposta, setEsperandoResposta] = useState(false);
-    const [tempoEspera, setTempoEspera] = useState(0);
-    const [mostrarAjuda, setMostrarAjuda] = useState(false);
-    const esperaRef = useRef(null);
 
     const formatarTempo = (ms) => {
         const horas = Math.floor(ms / 1000 / 60 / 60);
@@ -39,28 +34,7 @@ const Game = () => {
         setTempoRestante(formatarTempo(diff));
     }, []);
 
-    const iniciarContagemEspera = () => {
-        setTempoEspera(0);
-        setMostrarAjuda(false);
-        esperaRef.current = setInterval(() => {
-            setTempoEspera(prev => {
-                const novoTempo = prev + 1;
-                if (novoTempo >= 5) setMostrarAjuda(true);
-                return novoTempo;
-            });
-        }, 1000);
-    };
-
-    const pararContagemEspera = () => {
-        clearInterval(esperaRef.current);
-        setTempoEspera(0);
-        setEsperandoResposta(false);
-        setMostrarAjuda(false);
-    };
-
     const handleIniciarJogo = useCallback(async () => {
-        setEsperandoResposta(true);
-        iniciarContagemEspera();
         try {
             const nome = jogador.trim() || 'Anonimo';
             const jogo = await iniciarJogo(nome, modo);
@@ -78,9 +52,6 @@ const Game = () => {
             }
         } catch (err) {
             console.error("Erro ao iniciar o jogo:", err);
-            alert("Erro ao iniciar o jogo. Tente novamente.");
-        } finally {
-            pararContagemEspera();
         }
     }, [jogador, modo]);
 
@@ -153,27 +124,9 @@ const Game = () => {
                 </div>
             </div>
 
-            <div className="btn-ajuda-container">
-                <button className="btn-iniciar" onClick={handleIniciarJogo}>
-                    <FaPlay />
-                </button>
-
-                {esperandoResposta && mostrarAjuda && (
-                    <>
-                        <button 
-                            className="btn-ajuda" 
-                            data-tooltip-id="tooltip-ajuda"
-                        >
-                            <FaQuestionCircle />
-                        </button>
-                        <Tooltip 
-                            id="tooltip-ajuda" 
-                            place="top" 
-                            content={`Esperando resposta do servidor há ${tempoEspera} segundos...`}
-                        />
-                    </>
-                )}
-            </div>
+            <button className="btn-iniciar" onClick={handleIniciarJogo}>
+                <FaPlay />
+            </button>
 
             {jogoId && acertou && (
                 <div className="contador-container">

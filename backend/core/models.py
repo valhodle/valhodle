@@ -1,6 +1,6 @@
 from django.db import models
 
-# Define as tabelas do banco de dados 
+# Define as tabelas do banco de dados
 class Pessoa(models.Model):
     nome = models.CharField(max_length=100)
     ano = models.IntegerField(default=0)
