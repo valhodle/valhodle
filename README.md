@@ -123,6 +123,22 @@ python manage.py runserver
 
 ## Deploy no Render
 
+O projeto está hospedado no Render, com os seguintes serviços:
+
+- Frontend: https://valhodle.onrender.com/
+
+- Backend: https://valhodlebackend.onrender.com/
+
+### Backend
+
+Em ambiente de produção (Render), o backend utiliza um banco PostgreSQL fornecido pelo Supabase, por meio de uma variável de ambiente DATABASE_URL configurada no Render.
+
+Em ambiente de desenvolvimento local, o backend utiliza SQLite3 por padrão.
+
+O arquivo db.sqlite3 não é commitado no repositório (está no .gitignore) para evitar conflitos de versão e preservar a consistência dos dados de ranking e jogos.
+
+### Start Command no Render
+
 O servidor executa automaticamente os seguintes comandos definidos no campo Start Command do Render:
 ```sh
 python manage.py migrate && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
@@ -193,7 +209,3 @@ Endpoint: `POST /api/jogo/tentar`
 - Para configurar variáveis de ambiente no frontend, crie um arquivo `.env` na pasta `valhodle/frontend/` e adicione as configurações necessárias.
 
 ---
-
-## 🚀 To-do: Migrar de SQLite para PostgreSQL no Render
-
-Atualmente, o projeto usa SQLite, o que faz com que o banco seja resetado a cada novo deploy no Render (já que o arquivo db.sqlite3 não está versionado)
