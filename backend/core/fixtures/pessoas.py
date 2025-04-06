@@ -27,5 +27,4 @@ def df_para_json(df, caminho_json):
     with open(caminho_json, "w", encoding='utf-8') as jsonfile:
         json.dump(pessoas, jsonfile, ensure_ascii=False, indent=4)
 
-# Exemplo de uso
 df_para_json(df, "pessoas.json")

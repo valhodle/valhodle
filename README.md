@@ -56,7 +56,7 @@ O servidor estará disponível em `http://127.0.0.1:8000/`.
 
 ### 4. Atualizar o banco de dados
 
-#### Exportar dados do banco de dados para JSON:
+#### Exportar dados do banco de dados do servidor Django para JSON local:
 Se precisar atualizar os dados de pessoas.json a partir do servidor Django, use:
 ```sh
 python manage.py dumpdata core.Pessoa --indent 4 > core/fixtures/pessoas.json
@@ -70,14 +70,16 @@ python manage.py loaddata core/fixtures/pessoas.json
 
 #### Atualizar o banco de dados com dados do Google Sheets:
 Se precisar atualizar o banco de dados com os dados do Google Sheets, siga os passos:
-1. Navegue até a pasta correta:
+1. Navegue até a pasta fixtures:
 ```sh
 cd Valhodle/backend/core/fixtures
 ```
+
 2. Execute o script `pessoas.py` para atualizar `pessoas.json`:
 ```sh
 python pessoas.py
 ```
+
 3. Carregue os novos dados no banco em `/backend`:
 ```sh
 cd ../..
@@ -90,6 +92,47 @@ python manage.py makemigrations core
 python manage.py migrate
 python manage.py runserver
 ```
+---
+
+## Para adicionar uma nova categoria
+1. Vá até `C:\Projetos\Valhodle\backend\core\models.py` e adicione a categoria na classe `Pessoa`.
+
+2. Atualize o nome do atributo em `C:\Projetos\Valhodle\frontend\src\components\feedback.js`.
+
+3. Rode os seguintes comandos para adicionar o atributo ao banco de dados:
+```sh
+python manage.py makemigrations core
+python manage.py migrate
+```
+
+4. Adicione essa nova coluna com o nome do modelo na planilha do Google Sheets, caso ela ainda não esteja lá.
+
+5. Atualize o script `pessoas.py` com a nova categoria.
+
+6. Rode o script `pessoas.py` em `C:\Projetos\Valhodle\backend\core\fixtures\pessoas.py`.
+
+6. Atualize o banco de dados com:
+```sh
+python manage.py loaddata core/fixtures/pessoas.json
+```
+
+7. Rode o server  com:
+```sh
+python manage.py runserver
+```
+
+## Deploy no Render
+
+O servidor executa automaticamente os seguintes comandos definidos no campo Start Command do Render:
+```sh
+python manage.py migrate && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
+```
+Ou seja:
+
+- As migrações versionadas (criadas com makemigrations e salvas no repositório) são aplicadas automaticamente no banco de dados do servidor.
+
+- O arquivo pessoas.json é carregado no banco sem apagar dados existentes (como os jogos e rankings), pois o arquivo db.sqlite3 não é enviado para o Git — ele está corretamente listado no .gitignore.
+---
 
 ### 5. Testar Endpoints
 Para testar o backend, envie requisições para os endpoints da API no site do Django:
@@ -142,28 +185,6 @@ Endpoint: `POST /api/jogo/tentar`
     "tentativas": 4
 }
 ```
----
-
-## Para adicionar uma nova categoria
-1. Vá até `C:\Projetos\Valhodle\backend\core\models.py` e adicione a categoria na classe `Pessoa`.
-2. Atualize o nome do atributo em `C:\Projetos\Valhodle\frontend\src\components\feedback.js`.
-3. Rode os seguintes comandos para adicionar o atributo ao banco de dados:
-```sh
-python manage.py makemigrations core
-python manage.py migrate
-```
-4. Adicione essa nova coluna com o nome do modelo na planilha do Google Sheets, caso ela ainda não esteja lá.
-5. Atualize o script `pessoas.py` com a nova categoria.
-6. Rode o script `pessoas.py` em `C:\Projetos\Valhodle\backend\core\fixtures\pessoas.py`.
-6. Atualize o banco de dados com:
-```sh
-python manage.py loaddata core/fixtures/pessoas.json
-```
-7. Rode o server  com:
-```sh
-python manage.py runserver
-```
-
 ---
 
 ## Notas adicionais
