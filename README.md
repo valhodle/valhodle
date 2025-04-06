@@ -194,4 +194,6 @@ Endpoint: `POST /api/jogo/tentar`
 
 ---
 
+## 🚀 To-do: Migrar de SQLite para PostgreSQL no Render
 
+Atualmente, o projeto usa SQLite, o que faz com que o banco seja resetado a cada novo deploy no Render (já que o arquivo db.sqlite3 não está versionado)

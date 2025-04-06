@@ -5,3 +5,6 @@ psycopg2-binary
 whitenoise
 django-cors-headers
 djangorestframework
+
+
+
