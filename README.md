@@ -42,8 +42,8 @@ pip install -r requirements.txt
 ### 2. Criar e atualizar o banco de dados
 Antes de rodar o servidor, o banco de dados precisa estar configurado corretamente:
 ```sh
-python manage.py makemigrations core  # Cria as migrações para o app core
-python manage.py migrate             # Aplica as migrações ao banco de dados
+python manage.py makemigrations core  
+python manage.py migrate             
 ```
 Esses comandos garantem que a estrutura do banco esteja atualizada com os modelos do Django.
 
@@ -173,23 +173,4 @@ python manage.py runserver
 
 ---
 
-## Draft
-
-```sh
-Valhodle\Scripts\activate
-
-python manage.py makemigrations core
-python manage.py migrate
-#python core/populate.py
-python manage.py runserver
-```
-🔗 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
-Atualizar o banco de dados com o site do Django
-
-python manage.py dumpdata core.Pessoa --indent 4 > core/fixtures/pessoas.json
-
-Atualizar o banco de dados apenas com os dados do pessoas.json
-
-python manage.py loaddata core/fixtures/pessoas.json
 

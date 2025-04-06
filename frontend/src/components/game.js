@@ -40,11 +40,14 @@ const Game = () => {
     }, []);
 
     const handleIniciarJogo = useCallback(async () => {
-        setErroServidor(false); 
-    
-        timeoutRef.current = setTimeout(() => {
-            setErroServidor(true);
-        }, 8000);
+        
+
+        if (!timeoutRef.current) {
+            timeoutRef.current = setTimeout(() => {
+                setErroServidor(true);
+                timeoutRef.current = null;
+            }, 1000);
+        }
     
         try {
             const nome = jogador.trim() || 'Anonimo';
@@ -57,7 +60,8 @@ const Game = () => {
             }
 
             setJogoId(jogo.jogo_id);
-
+            setErroServidor(false); 
+            
             if (nome.toLowerCase() !== 'anonimo' && jogo.mensagem?.includes("já jogou hoje")) {
                 setFeedbacks([{ feedback: jogo.feedback, acertou: jogo.acertou }]);
                 setAcertou(jogo.acertou);
