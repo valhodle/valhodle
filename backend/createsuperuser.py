@@ -1,4 +1,4 @@
-# backend/createsuperuser.py
+# comando Render: python manage.py makemigrations && python manage.py migrate && python createsuperuser.py && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
 import os
 import django
 
