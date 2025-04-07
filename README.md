@@ -141,13 +141,15 @@ O arquivo db.sqlite3 não é commitado no repositório (está no .gitignore) par
 
 O servidor executa automaticamente os seguintes comandos definidos no campo Start Command do Render:
 ```sh
-python manage.py migrate && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
+python manage.py migrate && python core/fixtures/pessoas.py && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
 ```
 Ou seja:
 
 - As migrações versionadas (criadas com makemigrations e salvas no repositório) são aplicadas automaticamente no banco de dados do servidor.
 
-- O arquivo pessoas.json é carregado no banco sem apagar dados existentes (como os jogos e rankings), pois o arquivo db.sqlite3 não é enviado para o Git — ele está corretamente listado no .gitignore.
+- O script pessoas.py é executado em seguida. Ele é responsável por buscar os dados atualizados da planilha do Google Sheets e gerar o arquivo pessoas.json na pasta core/fixtures.
+
+- O arquivo pessoas.json é carregado com o comando loaddata no banco sem apagar dados existentes (como os jogos e rankings), pois o arquivo db.sqlite3 não é enviado para o Git — ele está corretamente listado no .gitignore.
 ---
 
 ### 5. Testar Endpoints
