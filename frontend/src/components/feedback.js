@@ -21,6 +21,11 @@ const alturaParaIntervalo = (altura) => {
     return `${inf}-${sup}`;
 };
 
+const getIntervalo = (altura) => {
+    const alturaNum = parseInt(altura);
+    if (isNaN(alturaNum)) return null;
+    return Math.floor(alturaNum / 10);
+};
 
 const FeedbackTable = ({ tentativas }) => {
     if (!tentativas || tentativas.length === 0) return null;
@@ -50,20 +55,24 @@ const FeedbackTable = ({ tentativas }) => {
                             const { valor, correto, valorCorreto } = tentativa.feedback[atributo];
 
                             let classeCor = "incorrect";
-                            if (correto === "certo") {
-                                classeCor = "correct";
-                            } else if (correto === "meio") {
-                                classeCor = "partial";
+
+                            if (atributo === "altura") {
+                                const intervaloValor = getIntervalo(valor);
+                                const intervaloCorreto = getIntervalo(valorCorreto);
+                                if (intervaloValor === intervaloCorreto) {
+                                    classeCor = "correct";
+                                } else {
+                                    classeCor = "incorrect";
+                                }
+                            } else {
+                                if (correto === "certo") {
+                                    classeCor = "correct";
+                                } else if (correto === "meio") {
+                                    classeCor = "partial";
+                                }
                             }
 
                             let arrowIcon = null;
-
-                            const getIntervalo = (altura) => {
-                                const alturaNum = parseInt(altura);
-                                if (isNaN(alturaNum)) return null;
-                                return Math.floor(alturaNum / 10); // ex: 167 -> 16 (representa 160-169)
-                            };
-
                             if (atributo === "altura") {
                                 const intervaloValor = getIntervalo(valor);
                                 const intervaloCorreto = getIntervalo(valorCorreto);

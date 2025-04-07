@@ -9,7 +9,7 @@ import hashlib
 import traceback  
 
 def escolher_alvo_diario():
-    pessoas = list(Pessoa.objects.all())
+    pessoas = list(Pessoa.objects.only('id', 'nome'))
 
     if not pessoas:
         return None
