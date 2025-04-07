@@ -131,7 +131,7 @@ O projeto está hospedado no Render, com os seguintes serviços:
 
 ### Backend
 
-Em ambiente de produção (Render), o backend utiliza um banco PostgreSQL fornecido pelo Supabase, por meio de uma variável de ambiente DATABASE_URL configurada no Render.
+Em ambiente de produção (Render), o backend utiliza um banco PostgreSQL fornecido pelo Neon (console.neon.tech), por meio de uma variável de ambiente DATABASE_URL configurada no Render.
 
 Em ambiente de desenvolvimento local, o backend utiliza SQLite3 por padrão.
 
@@ -201,6 +201,34 @@ Endpoint: `POST /api/jogo/tentar`
     "tentativas": 4
 }
 ```
+---
+
+## Criação de Superusuário
+
+### Ambiente local
+Para criar um superusuário localmente, utilize o terminal com o comando padrão do Django:
+
+```bash
+python manage.py createsuperuser
+```
+
+Siga as instruções para informar nome de usuário, e-mail e senha.
+
+### Ambiente de produção (Render)
+Como o Render não possui acesso direto ao terminal, a criação do superusuário é feita automaticamente via script.
+
+O script createsuperuser.py está localizado em:
+backend/createsuperuser.py
+
+Esse script é executado durante o processo de build e cria um superusuário apenas se ele ainda não existir.
+
+Para rodar esse script vá em Settings > Start Command e adicione o comando ```&& python createsuperuser.py ``` para rodar esse comando de criação.
+
+Lembre-se de configurar as variáveis no Render: 
+- `DJANGO_SUPERUSER_USERNAME`
+- `DJANGO_SUPERUSER_EMAIL`
+- `DJANGO_SUPERUSER_PASSWORD`
+
 ---
 
 ## Notas adicionais
