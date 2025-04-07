@@ -173,7 +173,7 @@ const Game = () => {
                     <input
                         type="text"
                         className="input-jogador"
-                        placeholder="Jogador"
+                        placeholder="Digite seu nome..."
                         value={jogador}
                         onChange={(e) => setJogador(e.target.value)}
                         onKeyDown={handleJogadorKeyPress}
@@ -197,7 +197,7 @@ const Game = () => {
                 <Tooltip
                     id="tooltip-ajuda"
                     place="right"
-                    content="O servidor pode estar demorando para responder. Tente novamente em alguns segundos."
+                    content="O servidor é grátis e às vezes demora para responder. Tente novamente em alguns segundos."
                 />
             </div>
 

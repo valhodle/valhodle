@@ -143,6 +143,9 @@ O servidor executa automaticamente os seguintes comandos definidos no campo Star
 ```sh
 python manage.py migrate && python core/fixtures/pessoas.py && python manage.py loaddata core/fixtures/pessoas.json && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
 ```
+
+python core/fixtures/pessoas.py && python manage.py loaddata core/fixtures/pessoas.json && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:10000 --log-file -
+
 Ou seja:
 
 - As migrações versionadas (criadas com makemigrations e salvas no repositório) são aplicadas automaticamente no banco de dados do servidor.
