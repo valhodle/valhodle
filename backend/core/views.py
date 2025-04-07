@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import hashlib
 import traceback
 from django.http import JsonResponse
+from django.utils.timezone import now
 
 def escolher_alvo_diario():
     pessoas = list(Pessoa.objects.only('id', 'nome'))
@@ -53,9 +54,18 @@ def iniciar_jogo(request):
             return Response({'erro': 'Nenhuma pessoa cadastrada como alvo.'}, status=500)
 
         if not is_anonimo:
-            jogo_existente = Jogo.objects.filter(jogador=jogador, alvo=alvo, concluido=True).first()
+            hoje = now().date()
+            jogo_existente = Jogo.objects.filter(
+                jogador__iexact=jogador,
+                alvo=alvo,
+                concluido=True,
+                data__date=hoje
+            ).first()
+            
             print(is_anonimo)
-            print("Jogo existente")        
+            print("Jogo existente")
+            print(hoje)
+            print(jogo_existente)  
         else:
             jogo_existente = None  
         
