@@ -50,7 +50,7 @@ const Game = () => {
         }
     
         try {
-            const nome = jogador.trim() || 'Anonimo';
+            const nome = jogador.trim() || 'jogador_anonimo';
             const jogo = await iniciarJogo(nome, modo);
 
             clearTimeout(timeoutRef.current);
@@ -62,7 +62,7 @@ const Game = () => {
             setJogoId(jogo.jogo_id);
             setErroServidor(false); 
             
-            if (nome.toLowerCase() !== 'anonimo' && jogo.mensagem?.includes("já jogou hoje")) {
+            if (nome.toLowerCase() !== 'jogador_anonimo' && jogo.mensagem?.includes("já jogou hoje")) {
                 setFeedbacks([{ feedback: jogo.feedback, acertou: jogo.acertou }]);
                 setAcertou(jogo.acertou);
                 setTentativas(jogo.tentativas);
@@ -81,24 +81,41 @@ const Game = () => {
     
 
     const handleEnviarTentativa = useCallback(async () => {
-        if (!tentativa) return;
-
+        if (!tentativa) {
+            console.log("Tentativa vazia. Nenhuma ação realizada.");
+            return;
+        }
+    
+        console.log("Enviando tentativa:", tentativa);
+    
         try {
             const resposta = await verificarTentativa(jogoId, tentativa);
-            if (resposta.mensagem === "Amigo não encontrado!") return;
-
+            console.log("Resposta recebida da API:", resposta);
+    
+            if (resposta.mensagem === "Amigo não encontrado!") {
+                console.log("Amigo não encontrado:", tentativa);
+                return;
+            }
+    
             setFeedbacks(prev => [
                 { feedback: resposta.feedback, acertou: resposta.acertou },
                 ...prev
             ]);
+            console.log("Feedbacks atualizados");
+    
             setAcertou(resposta.acertou);
+            console.log("Acertou?", resposta.acertou);
+    
             setTentativas(resposta.tentativas);
+            console.log("Total de tentativas:", resposta.tentativas);
+    
             setTentativa('');
         } catch (err) {
             console.error("Erro ao verificar tentativa:", err);
             alert("Erro ao enviar tentativa. Tente novamente.");
         }
     }, [tentativa, jogoId]);
+    
 
     useEffect(() => {
         atualizarTempo();

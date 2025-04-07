@@ -16,7 +16,11 @@ const Ranking = ({ onClose }) => {
                 return res.json();
             })
             .then((data) => {
-                const rankingFiltrado = data.filter(item => item.jogador.toLowerCase() !== "anonimo");
+                const removerAcentos = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const rankingFiltrado = data.filter(item => {
+                    const nome = removerAcentos(item.jogador.toLowerCase());
+                    return !nome.startsWith("jogador_anonimo");
+                });
                 setRanking(rankingFiltrado);
             })
             .catch((err) => console.error("Erro ao carregar ranking:", err));

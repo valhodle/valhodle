@@ -6,6 +6,7 @@ from django.db.models import Avg, Count
 import random
 from datetime import datetime, timedelta
 import hashlib
+import traceback  
 
 def escolher_alvo_diario():
     pessoas = list(Pessoa.objects.all())
@@ -19,63 +20,88 @@ def escolher_alvo_diario():
 
     return random.choice(pessoas)
 
+
+
 @api_view(['POST'])
 def iniciar_jogo(request):
-    jogador = request.data.get('jogador', '').strip().title()
-    modo = request.data.get('modo', 'normal')
+    try:
+        jogador = request.data.get('jogador', '').strip()
+        if jogador == "jogador_anonimo":
+            is_anonimo = True
+        else:
+            is_anonimo = False
+        
+        modo = request.data.get('modo', 'normal')
 
-    if not jogador:
-        return Response({'erro': 'Nome do jogador é obrigatório'}, status=400)
+        print("Requisição recebida para iniciar jogo")
+        print("Jogador:", jogador)
+        print("Modo:", modo)
 
-    if modo not in ['normal', 'frase']:
-        return Response({'erro': 'Modo inválido. Escolha "normal" ou "frase".'}, status=400)
+        if modo not in ['normal', 'frase']:
+            print("Erro: Modo inválido. Escolha normal ou frase.")
+            return Response({'erro': 'Modo inválido. Escolha \"normal\" ou \"frase\".'}, status=400)
 
-    alvo = escolher_alvo_diario()
-    if not alvo:
-        return Response({'erro': 'Nenhuma pessoa cadastrada como alvo.'}, status=500)
+        alvo = escolher_alvo_diario()
+        print("Alvo escolhido:", alvo)
 
-    jogo_existente = Jogo.objects.filter(jogador=jogador, alvo=alvo, concluido=True).first()
+        if not alvo:
+            print("Erro: Nenhuma pessoa cadastrada como alvo.")
+            return Response({'erro': 'Nenhuma pessoa cadastrada como alvo.'}, status=500)
 
-    agora = datetime.now()
-    meia_noite = (agora + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
-    segundos_restantes = int((meia_noite - agora).total_seconds())
+        if not is_anonimo:
+            jogo_existente = Jogo.objects.filter(jogador=jogador, alvo=alvo, concluido=True).first()
+            print(is_anonimo)
+            print("Jogo existente")        
+        else:
+            jogo_existente = None  
+        
+        agora = datetime.now()
+        meia_noite = (agora + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+        segundos_restantes = int((meia_noite - agora).total_seconds())
 
-    if jogo_existente:
-        feedback = {}
-        if modo == "normal":
-            for field in Pessoa._meta.fields:
-                if field.name not in ["id"]:
-                    valor_alvo = getattr(alvo, field.name)
-                    feedback[field.name] = {
-                        "valor": valor_alvo,
-                        "correto": "certo",
-                        "valorCorreto": valor_alvo
+        if jogo_existente:
+            feedback = {}
+            if modo == "normal":
+                for field in Pessoa._meta.fields:
+                    if field.name not in ["id"]:
+                        valor_alvo = getattr(alvo, field.name)
+                        feedback[field.name] = {
+                            "valor": valor_alvo,
+                            "correto": "certo",
+                            "valorCorreto": valor_alvo
+                        }
+            elif modo == "frase":
+                feedback = {
+                    "frase": {
+                        "valor": alvo.frase,
+                        "correto": True
                     }
-        elif modo == "frase":
-            feedback = {
-                "frase": {
-                    "valor": alvo.frase,
-                    "correto": True
                 }
-            }
+            print(feedback)
+            print("Jogador já jogou hoje.")
+            return Response({
+                'mensagem': 'Você já jogou hoje! Aqui está sua jogada registrada.',
+                'jogo_id': jogo_existente.id, 
+                'acertou': True,
+                'feedback': feedback,
+                'tentativas': jogo_existente.tentativas,
+                'tempo_restante': segundos_restantes
+            })
+
+        jogo = Jogo.objects.create(jogador=jogador, alvo=alvo, modo=modo)
+        print("Novo jogo criado:", jogo.id)
 
         return Response({
-            'mensagem': 'Você já jogou hoje! Aqui está sua jogada registrada.',
-            'jogo_id': jogo_existente.id, 
-            'acertou': True,
-            'feedback': feedback,
-            'tentativas': jogo_existente.tentativas,
-            'tempo_restante': segundos_restantes
+            'mensagem': 'Jogo iniciado!',
+            'jogo_id': jogo.id,
+            'modo': modo,
+            'tempo_restante': segundos_restantes 
         })
 
-    jogo = Jogo.objects.create(jogador=jogador, alvo=alvo, modo=modo)
-
-    return Response({
-        'mensagem': 'Jogo iniciado!',
-        'jogo_id': jogo.id,
-        'modo': modo,
-        'tempo_restante': segundos_restantes 
-    })
+    except Exception as e:
+        print("Erro ao iniciar o jogo:", e)
+        print(traceback.format_exc()) 
+        return Response({'erro': 'Erro ao iniciar o jogo'}, status=500)
 
 @api_view(['POST'])
 def verificar_tentativa(request):
@@ -83,23 +109,28 @@ def verificar_tentativa(request):
     tentativa_nome = request.data.get('tentativa')
 
     if not jogo_id or not tentativa_nome:
+        print('ID do jogo e nome do amigo são obrigatórios')
         return Response({'erro': 'ID do jogo e nome do amigo são obrigatórios'}, status=400)
 
     try:
         jogo = Jogo.objects.get(id=jogo_id, concluido=False)
     except Jogo.DoesNotExist:
+        print('Jogo não encontrado ou já finalizado')
         return Response({'erro': 'Jogo não encontrado ou já finalizado'}, status=404)
 
     tentativa = Pessoa.objects.filter(nome__iexact=tentativa_nome).first()
 
     if not tentativa:
+        print('Amigo não encontrado!')
         return Response({
             'mensagem': 'Amigo não encontrado!',
             'acertou': False,
             'tentativas': jogo.tentativas
         })
 
+    
     jogo.tentativas += 1
+    print(jogo.tentativas)
     jogo.save()
 
     alvo = jogo.alvo
@@ -137,6 +168,7 @@ def verificar_tentativa(request):
             }
         }
 
+    print(tentativa)
     if tentativa == alvo:
         jogo.concluido = True
         jogo.save()
@@ -144,6 +176,7 @@ def verificar_tentativa(request):
         for key in feedback:
             feedback[key]["correto"] = "certo"
 
+        print('Parabéns! Você acertou!')
         return Response({
             'mensagem': 'Parabéns! Você acertou!', 
             'acertou': True, 
@@ -151,6 +184,7 @@ def verificar_tentativa(request):
             'tentativas': jogo.tentativas
         })
 
+    print('Tente novamente!')
     return Response({
         'mensagem': 'Tente novamente!', 
         'acertou': False, 

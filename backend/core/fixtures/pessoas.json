@@ -173,7 +173,7 @@
         "model": "core.pessoa",
         "pk": 8,
         "fields": {
-            "nome": "Santana",
+            "nome": "Sant'anna",
             "ano": 2002,
             "oculos": [
                 "sim"
