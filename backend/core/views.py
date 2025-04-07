@@ -6,7 +6,8 @@ from django.db.models import Avg, Count
 import random
 from datetime import datetime, timedelta
 import hashlib
-import traceback  
+import traceback
+from django.http import JsonResponse
 
 def escolher_alvo_diario():
     pessoas = list(Pessoa.objects.only('id', 'nome'))
@@ -20,7 +21,10 @@ def escolher_alvo_diario():
 
     return random.choice(pessoas)
 
-
+def listar_nomes_pessoas(request):
+    if request.method == "GET":
+        nomes = list(Pessoa.objects.values_list('nome', flat=True))
+        return JsonResponse(nomes, safe=False)
 
 @api_view(['POST'])
 def iniciar_jogo(request):

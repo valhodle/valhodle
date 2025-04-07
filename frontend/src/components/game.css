@@ -237,6 +237,31 @@ body {
     transform: scale(1.1);
 }
 
+.sugestoes-lista {
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    width: 26%;
+    z-index: 10;
+    margin-top: 4px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0;
+}
+
+.sugestoes-lista li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.sugestoes-lista li:hover {
+    background-color: #f0f0f0;
+}
+
+
 
 
 

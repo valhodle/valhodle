@@ -7,22 +7,21 @@ import { FaGamepad, FaMedal, FaPlay, FaStar } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 const Game = () => {
+    const API_URL = process.env.REACT_APP_API_URL;
     const [jogoId, setJogoId] = useState(null);
     const [tentativas, setTentativas] = useState(0);
     const [feedbacks, setFeedbacks] = useState([]);
     const [acertou, setAcertou] = useState(false);
-
     const [jogador, setJogador] = useState('');
     const [tentativa, setTentativa] = useState('');
     const [modo, setModo] = useState('normal');
-
     const [mostrarRanking, setMostrarRanking] = useState(false);
     const [tempoRestante, setTempoRestante] = useState('');
-
     const tentativaInputRef = useRef(null);
-
     const [erroServidor, setErroServidor] = useState(false);
     const timeoutRef = useRef(null);
+    const [nomesValidos, setNomesValidos] = useState([]);
+    const [sugestoesVisiveis, setSugestoesVisiveis] = useState(false);
 
     const formatarTempo = (ms) => {
         const horas = Math.floor(ms / 1000 / 60 / 60);
@@ -40,19 +39,16 @@ const Game = () => {
     }, []);
 
     const handleIniciarJogo = useCallback(async () => {
-        
-
         if (!timeoutRef.current) {
             timeoutRef.current = setTimeout(() => {
                 setErroServidor(true);
                 timeoutRef.current = null;
             }, 1000);
         }
-    
+
         try {
             const nome = jogador.trim() || 'jogador_anonimo';
             const jogo = await iniciarJogo(nome, modo);
-
             clearTimeout(timeoutRef.current);
 
             if (!jogo || !jogo.jogo_id) {
@@ -60,8 +56,8 @@ const Game = () => {
             }
 
             setJogoId(jogo.jogo_id);
-            setErroServidor(false); 
-            
+            setErroServidor(false);
+
             if (nome.toLowerCase() !== 'jogador_anonimo' && jogo.mensagem?.includes("já jogou hoje")) {
                 setFeedbacks([{ feedback: jogo.feedback, acertou: jogo.acertou }]);
                 setAcertou(jogo.acertou);
@@ -76,46 +72,30 @@ const Game = () => {
             console.error("Erro ao iniciar o jogo:", err);
             setErroServidor(true);
         }
-        
+
     }, [jogador, modo]);
-    
 
     const handleEnviarTentativa = useCallback(async () => {
-        if (!tentativa) {
-            console.log("Tentativa vazia. Nenhuma ação realizada.");
-            return;
-        }
-    
-        console.log("Enviando tentativa:", tentativa);
-    
+        if (!tentativa) return;
+
         try {
             const resposta = await verificarTentativa(jogoId, tentativa);
-            console.log("Resposta recebida da API:", resposta);
-    
-            if (resposta.mensagem === "Amigo não encontrado!") {
-                console.log("Amigo não encontrado:", tentativa);
-                return;
-            }
-    
+            if (resposta.mensagem === "Amigo não encontrado!") return;
+
             setFeedbacks(prev => [
                 { feedback: resposta.feedback, acertou: resposta.acertou },
                 ...prev
             ]);
-            console.log("Feedbacks atualizados");
-    
+
             setAcertou(resposta.acertou);
-            console.log("Acertou?", resposta.acertou);
-    
             setTentativas(resposta.tentativas);
-            console.log("Total de tentativas:", resposta.tentativas);
-    
             setTentativa('');
+            setSugestoesVisiveis(false);
         } catch (err) {
             console.error("Erro ao verificar tentativa:", err);
             alert("Erro ao enviar tentativa. Tente novamente.");
         }
     }, [tentativa, jogoId]);
-    
 
     useEffect(() => {
         atualizarTempo();
@@ -129,6 +109,26 @@ const Game = () => {
         }
     }, [jogoId]);
 
+    useEffect(() => {
+        const carregarNomes = async () => {
+            const nomes = await buscarNomesValidos();
+            setNomesValidos(nomes);
+        };
+
+        carregarNomes();
+    }, []);
+
+    const buscarNomesValidos = async () => {
+        try {
+            const resposta = await fetch(`${API_URL}/nomes-validos/`);
+            const data = await resposta.json();
+            return data;
+        } catch (error) {
+            console.error("Erro ao buscar nomes válidos:", error);
+            return [];
+        }
+    };
+
     const handleKeyPress = (e) => {
         if (e.key === "Enter") handleEnviarTentativa();
     };
@@ -141,7 +141,7 @@ const Game = () => {
 
     const renderModoBotao = (modoAtual, icone, tooltip, onClick, selecionado = false) => (
         <>
-            <button 
+            <button
                 className={`modo-btn ${selecionado ? 'selected' : ''}`}
                 onClick={onClick}
                 data-tooltip-id={`tooltip-${tooltip}`}
@@ -152,8 +152,9 @@ const Game = () => {
         </>
     );
 
-
-    
+    const sugestoesFiltradas = nomesValidos.filter(nome =>
+        nome.toLowerCase().includes(tentativa.toLowerCase()) && tentativa !== ''
+    );
 
     return (
         <div>
@@ -162,7 +163,7 @@ const Game = () => {
             <div className="modo-container">
                 {renderModoBotao("normal", <FaGamepad className="modo-icon" />, "Modo normal", () => setModo("normal"), modo === "normal")}
                 {renderModoBotao("ranking", <FaMedal className="modo-icon" />, "Ranking", () => setMostrarRanking(true), mostrarRanking)}
-                {renderModoBotao("em-breve", <FaStar className="modo-icon" />, "Novos modos em breve", () => {}, false)}
+                {renderModoBotao("em-breve", <FaStar className="modo-icon" />, "Novos modos em breve", () => { }, false)}
             </div>
 
             {mostrarRanking && <Ranking onClose={() => setMostrarRanking(false)} />}
@@ -193,15 +194,12 @@ const Game = () => {
                     </button>
                 )}
 
-                <Tooltip 
-                    id="tooltip-ajuda" 
-                    place="right" 
-                    content="O servidor pode estar demorando para responder. Tente novamente em alguns segundos." 
+                <Tooltip
+                    id="tooltip-ajuda"
+                    place="right"
+                    content="O servidor pode estar demorando para responder. Tente novamente em alguns segundos."
                 />
             </div>
-
-
-
 
             {jogoId && acertou && (
                 <div className="contador-container">
@@ -213,19 +211,38 @@ const Game = () => {
 
             {jogoId && !acertou && (
                 <div className="tentativa-container">
-                    <input
-                        ref={tentativaInputRef}
-                        type="text"
-                        placeholder="Digite um nome..."
-                        value={tentativa}
-                        onChange={(e) => setTentativa(e.target.value)}
-                        onKeyDown={handleKeyPress}
-                        className="input-tentativa" 
-                    />
+                    <div className="input-sugestao-wrapper">
+                        <input
+                            ref={tentativaInputRef}
+                            type="text"
+                            placeholder="Digite um nome..."
+                            value={tentativa}
+                            onChange={(e) => {
+                                setTentativa(e.target.value);
+                                setSugestoesVisiveis(true);
+                            }}
+                            onKeyDown={handleKeyPress}
+                            className="input-tentativa"
+                            autoComplete="off"
+                        />
+                        {sugestoesVisiveis && sugestoesFiltradas.length > 0 && (
+                            <ul className="sugestoes-lista">
+                                {sugestoesFiltradas.map((nome, index) => (
+                                    <li key={index} onClick={() => {
+                                        setTentativa(nome);
+                                        setSugestoesVisiveis(false);
+                                    }}>
+                                        {nome}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                     <button className="btn-enviar" onClick={handleEnviarTentativa}>
                         Enviar
                     </button>
                 </div>
+            
             )}
 
             <div>

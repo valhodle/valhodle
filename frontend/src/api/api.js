@@ -2,6 +2,24 @@
 const API_URL = process.env.REACT_APP_API_URL;
 //const API_URL = "http://127.0.0.1:8000/api/jogo"; 
 
+export const buscarNomesValidos = async () => {
+    try {
+        const response = await fetch(`${API_URL}/nomes-validos/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) {
+            throw new Error("Erro ao buscar nomes válidos");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Erro ao buscar nomes válidos:", error);
+        return [];
+    }
+};
+
 export const iniciarJogo = async (jogador, modo = "normal") => {
     try {
         const response = await fetch(`${API_URL}/iniciar/`, {
