@@ -9,6 +9,7 @@ import hashlib
 import traceback
 from django.http import JsonResponse
 from django.utils.timezone import now
+from zoneinfo import ZoneInfo
 
 def escolher_alvo_diario():
     pessoas = list(Pessoa.objects.only('id', 'nome'))
@@ -16,7 +17,8 @@ def escolher_alvo_diario():
     if not pessoas:
         return None
 
-    hoje = datetime.now().strftime("%Y%m%d")
+    agora_br = datetime.now(ZoneInfo("America/Sao_Paulo"))
+    hoje = agora_br.strftime("%Y%m%d")
     seed = int(hashlib.sha256(hoje.encode()).hexdigest(), 16)
     random.seed(seed)
 
@@ -63,7 +65,6 @@ def iniciar_jogo(request):
             ).first()
             
             print(is_anonimo)
-            print("Jogo existente")
             print(hoje)
             print(jogo_existente)  
         else:
